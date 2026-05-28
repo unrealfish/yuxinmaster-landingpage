@@ -1,0 +1,1222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yuxin Master|Zi Wei Star-Picking Divination</title>
+  <meta name="description" content="Yuxin Master offers Zi Wei Star-Picking divination for specific questions, drawing on Zi Wei Dou Shu star symbolism to provide situational insight, key judgment and practical guidance." />
+  <meta name="theme-color" content="#170b2d" />
+  <meta property="og:title" content="Yuxin Master|Zi Wei Star-Picking Divination" />
+  <meta property="og:description" content="Ask one question, pick the stars, and receive Eastern star-based insight for the matter at hand." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yuxinmaster.site/" />
+  <style>
+    :root {
+      --bg: #10081f;
+      --bg-deep: #07030f;
+      --purple: #3d1c6b;
+      --purple-2: #6c3dc8;
+      --gold: #f3d38a;
+      --gold-deep: #a8742b;
+      --paper: #fff7e6;
+      --ink: #2b193f;
+      --muted: rgba(255, 247, 230, 0.72);
+      --muted-2: rgba(255, 247, 230, 0.52);
+      --card: rgba(255, 255, 255, 0.08);
+      --line: rgba(243, 211, 138, 0.24);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--paper);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background-size: 200% 200%;
+      animation: nebula 15s ease infinite;
+      overflow-x: hidden;
+    }
+    
+    @keyframes nebula {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .sky {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .star-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .container { width: min(100% - 40px, var(--max)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(243,211,138,.16);
+      background: rgba(14, 7, 28, .78);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 190px; }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      font-weight: 900;
+      color: #201022;
+      background: radial-gradient(circle at 32% 24%, #fff9d8, #f3d38a 42%, #9d6a29 80%);
+      box-shadow: 0 0 28px rgba(243,211,138,.32), inset 0 0 18px rgba(255,255,255,.34);
+      position: relative;
+    }
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: inherit;
+      border: 1px solid rgba(243,211,138,.38);
+    }
+    .brand-text strong { display: block; font-size: 16px; letter-spacing: .12em; }
+    .brand-text span { display: block; margin-top: 2px; color: var(--muted-2); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 14px; white-space: nowrap; }
+    .nav-links a { transition: color .2s ease; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      padding: 9px 15px;
+      border-radius: 999px;
+      color: var(--gold);
+      border: 1px solid rgba(243,211,138,.32);
+      background: rgba(243,211,138,.1);
+    }
+    .right-tools { display: flex; align-items: center; gap: 12px; }
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.055);
+      backdrop-filter: blur(14px);
+    }
+    .lang-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 7px 10px;
+      color: rgba(255,247,230,.66);
+      background: transparent;
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+      transition: color .2s ease, background .2s ease;
+    }
+    .lang-btn:hover { color: var(--gold); }
+    .lang-btn.active {
+      color: #211220;
+      background: linear-gradient(135deg, #fff4ca, #f3d38a 55%, #b9812f);
+      font-weight: 800;
+    }
+
+    .hero {
+      min-height: calc(100vh - 71px);
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 54px;
+      padding: 72px 0 88px;
+    }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: var(--gold);
+      border: 1px solid rgba(243,211,138,.25);
+      background: rgba(255,255,255,.06);
+      box-shadow: inset 0 0 28px rgba(243,211,138,.035);
+      font-size: 13px;
+      letter-spacing: .08em;
+    }
+    .kicker i { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 18px var(--gold); }
+    h1 {
+      margin: 28px 0 18px;
+      font-size: clamp(46px, 7vw, 92px);
+      line-height: .96;
+      letter-spacing: -.06em;
+      font-weight: 900;
+    }
+    .title-main {
+      display: block;
+      background: linear-gradient(112deg, #fff8e8 0%, #f3d38a 42%, #d3b0ff 78%, #fff8e8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 18px 80px rgba(243,211,138,.18);
+    }
+    .title-sub {
+      display: block;
+      margin-top: 12px;
+      font-size: clamp(20px, 3vw, 36px);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,247,230,.84);
+      font-weight: 650;
+    }
+    .hero-lead {
+      max-width: 670px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.9;
+    }
+    .hero-lead em { color: #fff8e8; font-style: normal; background: linear-gradient(transparent 58%, rgba(243,211,138,.2) 0); }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin: 34px 0 26px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { color: #211220; background: linear-gradient(135deg, #fff4ca, #f3d38a 42%, #a8742b); box-shadow: 0 18px 42px rgba(243,211,138,.2); }
+    .btn.ghost { border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.055); color: var(--paper); backdrop-filter: blur(14px); }
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; color: var(--muted-2); font-size: 13px; }
+    .tags span { padding: 8px 10px; border: 1px solid rgba(255,255,255,.09); border-radius: 999px; background: rgba(255,255,255,.04); }
+
+    .oracle-visual { position: relative; min-height: 620px; display: grid; place-items: center; }
+    .ring {
+      position: absolute;
+      width: min(86vw, 560px);
+      height: min(86vw, 560px);
+      border-radius: 50%;
+      background: conic-gradient(from 80deg, transparent 0 10%, rgba(243,211,138,.38) 15%, transparent 22% 38%, rgba(166,120,255,.35) 44%, transparent 51% 70%, rgba(243,211,138,.25) 78%, transparent 86% 100%);
+      mask: radial-gradient(circle, transparent 0 57%, black 58% 59%, transparent 60% 100%);
+      filter: drop-shadow(0 0 22px rgba(243,211,138,.22));
+      animation: rotate 28s linear infinite;
+    }
+    .ring.two { width: min(72vw, 458px); height: min(72vw, 458px); opacity: .72; animation-direction: reverse; animation-duration: 38s; }
+    @keyframes rotate { to { transform: rotate(360deg); } }
+
+    .oracle-card {
+      position: relative;
+      width: min(92vw, 392px);
+      min-height: 585px;
+      padding: 17px;
+      border-radius: 42px;
+      background: linear-gradient(145deg, rgba(255,255,255,.18), rgba(255,255,255,.045));
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: var(--shadow), inset 0 0 38px rgba(255,255,255,.05);
+      backdrop-filter: blur(20px);
+      transform: rotate(1.3deg);
+    }
+    .oracle-screen {
+      min-height: 552px;
+      border-radius: 31px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 8%, rgba(243,211,138,.2), transparent 34%),
+        radial-gradient(circle at 22% 26%, rgba(108,61,200,.32), transparent 32%),
+        linear-gradient(180deg, rgba(17,8,32,.95), rgba(7,3,15,.98));
+      border: 1px solid rgba(243,211,138,.2);
+    }
+    .oracle-screen::before {
+      content: "";
+      position: absolute;
+      left: 50%; top: 18px;
+      width: 78px; height: 6px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: rgba(255,255,255,.16);
+    }
+    .screen-top { margin-top: 32px; display: flex; align-items: center; justify-content: space-between; color: var(--muted-2); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+    .star-pick {
+      margin-top: 32px;
+      padding: 24px;
+      border-radius: 26px;
+      background: linear-gradient(160deg, rgba(255,255,255,.12), rgba(255,255,255,.035));
+      border: 1px solid rgba(243,211,138,.19);
+      box-shadow: inset 0 0 28px rgba(243,211,138,.04);
+      position: relative;
+    }
+    .star-pick::after {
+      content: var(--star-watermark, "✦");
+      position: absolute;
+      right: 14px; top: 8px;
+      font-size: 92px;
+      line-height: 1;
+      font-weight: 900;
+      color: rgba(243,211,138,.06);
+    }
+    .reading-label { display: inline-flex; padding: 7px 10px; border-radius: 999px; color: var(--gold); border: 1px solid rgba(243,211,138,.26); background: rgba(243,211,138,.1); font-size: 12px; font-weight: 800; }
+    .reading-title { margin: 22px 0 12px; font-size: 27px; line-height: 1.25; font-weight: 900; letter-spacing: -.03em; }
+    .reading-text { margin: 0; color: var(--muted); line-height: 1.78; font-size: 14px; }
+    .star-lines { margin-top: 22px; display: grid; gap: 12px; }
+    .star-line { display: flex; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 16px; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.08); font-size: 13px; color: rgba(255,247,230,.8); }
+    .star-line b { color: var(--gold); }
+    .ask-bubble { margin-top: 18px; display: grid; gap: 10px; }
+    .bubble { width: fit-content; max-width: 88%; padding: 11px 13px; border-radius: 16px; font-size: 13px; line-height: 1.55; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.09); color: rgba(255,247,230,.82); }
+    .bubble.master { justify-self: end; background: rgba(243,211,138,.13); border-color: rgba(243,211,138,.22); color: #fff2cd; }
+
+    section { padding: 92px 0; }
+    .section-head { max-width: 780px; margin-bottom: 36px; }
+    .eyebrow { margin: 0 0 12px; color: var(--gold); font-size: 12px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
+    h2 { margin: 0; font-size: clamp(32px, 4vw, 54px); line-height: 1.1; letter-spacing: -.05em; }
+    .section-desc { margin: 18px 0 0; color: var(--muted); font-size: 17px; line-height: 1.9; }
+
+    .intro-panel {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .quote-card, .paper-card, .feature-card, .download-card, .step-card, .faq-card {
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-top-color: rgba(243,211,138,.24);
+      background: linear-gradient(160deg, rgba(255,255,255,.1), rgba(255,255,255,.04));
+      box-shadow: 0 20px 64px rgba(0,0,0,.22), inset 0 0 28px rgba(255,255,255,.035);
+      backdrop-filter: blur(18px);
+    }
+    .quote-card { padding: 34px; background: radial-gradient(circle at 18% 14%, rgba(243,211,138,.14), transparent 34%), linear-gradient(160deg, rgba(255,255,255,.11), rgba(255,255,255,.04)); }
+    .quote-mark { font-size: 64px; line-height: .7; color: rgba(243,211,138,.42); font-family: Georgia, serif; }
+    .quote-card blockquote { margin: 12px 0 24px; font-size: clamp(24px, 3vw, 35px); line-height: 1.32; letter-spacing: -.04em; font-weight: 900; }
+    .quote-card p { margin: 0; color: var(--muted); line-height: 1.9; }
+    .paper-card { padding: 24px; background: rgba(255,247,230,.92); color: var(--ink); position: relative; overflow: hidden; }
+    .paper-card::after { content: var(--paper-watermark, "Star Picking"); position: absolute; right: -18px; bottom: -12px; font-size: 52px; font-weight: 900; color: rgba(61,28,107,.06); letter-spacing: -.04em; white-space: nowrap; }
+    .paper-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; position: relative; z-index: 1; }
+    .paper-item { min-height: 150px; padding: 18px; border-radius: 20px; background: rgba(255,255,255,.68); border: 1px solid rgba(61,28,107,.12); }
+    .paper-item b { display: block; margin-bottom: 10px; color: #5a3294; font-size: 17px; }
+    .paper-item span { color: rgba(43,25,63,.74); line-height: 1.75; font-size: 14px; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .feature-card { padding: 28px; min-height: 246px; position: relative; overflow: hidden; }
+    .feature-card::before { content: ""; position: absolute; right: -68px; top: -72px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(243,211,138,.17), transparent 65%); }
+    .icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 18px; color: var(--gold); border: 1px solid rgba(243,211,138,.22); background: rgba(243,211,138,.1); font-size: 23px; font-weight: 900; }
+    .feature-card h3, .step-card h3, .download-card h3, .faq-card h3 { margin: 20px 0 10px; font-size: 22px; letter-spacing: -.02em; }
+    .feature-card p, .step-card p, .download-card p, .faq-card p { margin: 0; color: var(--muted); line-height: 1.85; font-size: 15px; }
+
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: step; }
+    .step-card { padding: 24px; min-height: 232px; position: relative; overflow: hidden; }
+    .step-card::before { counter-increment: step; content: "0" counter(step); position: absolute; right: 20px; top: 16px; font-size: 48px; line-height: 1; font-weight: 900; color: rgba(243,211,138,.12); }
+
+    .download-wrap {
+      padding: 34px;
+      border-radius: 36px;
+      border: 1px solid rgba(243,211,138,.24);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(243,211,138,.16), transparent 34%),
+        radial-gradient(circle at 82% 14%, rgba(108,61,200,.28), transparent 32%),
+        linear-gradient(160deg, rgba(255,255,255,.1), rgba(255,255,255,.035));
+      box-shadow: var(--shadow), inset 0 0 44px rgba(255,255,255,.035);
+      backdrop-filter: blur(20px);
+    }
+    .download-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 28px; }
+    .download-card { padding: 22px; text-align: center; overflow: hidden; }
+    .qr-box { width: 208px; height: 208px; max-width: 100%; margin: 0 auto 18px; padding: 12px; border-radius: 24px; background: #fffaf0; display: grid; place-items: center; box-shadow: 0 18px 38px rgba(0,0,0,.28), 0 0 0 1px rgba(243,211,138,.16); }
+    .web-box { width: 208px; height: 208px; max-width: 100%; margin: 0 auto 18px; padding: 18px; border-radius: 24px; background: linear-gradient(145deg, rgba(255,250,240,.96), rgba(243,211,138,.82)); color: #2b193f; display: grid; place-items: center; box-shadow: 0 18px 38px rgba(0,0,0,.28), 0 0 0 1px rgba(243,211,138,.16); }
+    .web-box span { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 18px; border: 1px solid rgba(61,28,107,.16); font-size: 32px; font-weight: 900; letter-spacing: .05em; }
+    .qr-box img { width: 100%; height: 100%; display: block; border-radius: 14px; }
+    .download-link { display: block; margin-top: 14px; color: var(--gold); font-size: 13px; word-break: break-all; line-height: 1.5; }
+    .download-note { margin: 20px 0 0; color: var(--muted-2); font-size: 13px; line-height: 1.75; }
+
+    .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .faq-card { padding: 24px; }
+
+    .footer { padding: 52px 0 38px; border-top: 1px solid rgba(243,211,138,.13); color: var(--muted-2); font-size: 14px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .back-to-top { color: var(--gold); }
+    .mobile-only { display: none; }
+
+    @media (max-width: 1120px) {
+      .nav-links { gap: 12px; font-size: 13px; }
+      .brand { min-width: auto; }
+    }
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .mobile-only { display: inline-flex; }
+      .hero { grid-template-columns: 1fr; padding-top: 54px; gap: 34px; }
+      .oracle-visual { min-height: 570px; }
+      .intro-panel { grid-template-columns: 1fr; }
+      .grid-3, .download-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .nav-inner { padding: 13px 14px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .brand-text strong { font-size: 15px; }
+      .right-tools { gap: 8px; }
+      .lang-switcher { gap: 3px; padding: 4px; }
+      .lang-btn { padding: 6px 8px; font-size: 11px; }
+      .hero { min-height: auto; padding-bottom: 58px; }
+      .oracle-visual { min-height: 520px; }
+      .oracle-card { width: min(96vw, 354px); min-height: 520px; padding: 12px; border-radius: 34px; }
+      .oracle-screen { min-height: 496px; padding: 19px; border-radius: 26px; }
+      .reading-title { font-size: 24px; }
+      section { padding: 70px 0; }
+      .paper-grid, .steps { grid-template-columns: 1fr; }
+      .download-wrap { padding: 22px; border-radius: 28px; }
+      .btn { width: 100%; }
+      .tags span { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="starCanvas" class="star-canvas"></canvas>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" data-i18n-aria="brandAria">
+        <div class="brand-mark">玉</div>
+        <div class="brand-text">
+          <strong data-i18n="brandName">Yuxin Master</strong>
+          <span data-i18n="brandSub">Zi Wei Star-Picking</span>
+        </div>
+      </a>
+      <div class="nav-links" data-i18n-aria="mainNavAria">
+        <a href="#about" data-i18n="navAbout">Star-Picking</a>
+        <a href="#ziwei" data-i18n="navZiwei">Zi Wei Dou Shu</a>
+        <a href="#use" data-i18n="navUse">What to Ask</a>
+        <a href="#process" data-i18n="navProcess">How It Works</a>
+        <a href="#download" class="nav-cta" data-i18n="navDownload">Start Now</a>
+      </div>
+      <div class="right-tools">
+        <div class="lang-switcher" aria-label="Language selector">
+          <button class="lang-btn active" type="button" data-lang="en">EN</button>
+          <button class="lang-btn" type="button" data-lang="zh-CN">简</button>
+          <button class="lang-btn" type="button" data-lang="zh-TW">繁</button>
+        </div>
+        <a class="btn ghost mobile-only" href="#download" data-i18n="mobileUse">Start</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero container">
+      <div class="hero-copy">
+        <div class="kicker"><i></i><span data-i18n="heroKicker">Zi Wei Star-Picking · One Question, One Reading</span></div>
+        <h1>
+          <span class="title-main" data-i18n="heroTitle">Yuxin Master</span>
+          <span class="title-sub" data-i18n="heroSubtitle">玉心道长</span>
+        </h1>
+        <p class="hero-lead" data-i18n-html="heroLead">
+          Use <em>Zi Wei Star-Picking</em> for divination around a specific question. Rooted in the same star tradition as Zi Wei Dou Shu, it draws on star symbolism to reveal situational insight, key judgment and practical guidance.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#download" data-i18n="heroPrimary">Start a Reading</a>
+          <a class="btn ghost" href="#about" data-i18n="heroSecondary">Learn the Method</a>
+        </div>
+        <div class="tags" data-i18n-aria="productTagsAria">
+          <span data-i18n="tag1">Zi Wei Stars · Divination</span>
+          <span data-i18n="tag2">One question · Pick the stars</span>
+          <span data-i18n="tag3">iOS · Android · WeChat Mini Program · Web</span>
+        </div>
+      </div>
+
+      <div class="oracle-visual" aria-hidden="true">
+        <div class="ring"></div>
+        <div class="ring two"></div>
+        <div class="oracle-card">
+          <div class="oracle-screen">
+            <div class="screen-top">
+              <span data-i18n="screenBrand">Yuxin Master</span>
+              <span data-i18n="screenMode">Star Reading</span>
+            </div>
+            <div class="star-pick">
+              <span class="reading-label" data-i18n="readingLabel">Stars picked: Tian Ji · Tai Yin · Tian Liang</span>
+              <div class="reading-title" data-i18n="readingTitle">For this matter, clarify the facts before taking action.</div>
+              <p class="reading-text" data-i18n="readingText">The star signs suggest that the situation can move forward, but the key is to gather the missing information before deciding.</p>
+              <div class="star-lines">
+                <div class="star-line"><span data-i18n="line1Label">Question</span><b data-i18n="line1Value">Career choice</b></div>
+                <div class="star-line"><span data-i18n="line2Label">Pattern</span><b data-i18n="line2Value">Plan before action</b></div>
+                <div class="star-line"><span data-i18n="line3Label">Guidance</span><b data-i18n="line3Value">Review within 3 days</b></div>
+              </div>
+            </div>
+            <div class="ask-bubble">
+              <div class="bubble" data-i18n="bubbleUser">Is this project suitable to push forward now?</div>
+              <div class="bubble master" data-i18n="bubbleMaster">It can move forward, but not in a rush. First confirm the key resources and the other party's real attitude.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container intro-panel">
+        <div class="quote-card">
+          <div class="quote-mark">"</div>
+          <blockquote data-i18n="quoteTitle">Pick one star, ask one matter.</blockquote>
+          <p data-i18n="quoteText">Yuxin Master focuses on the question in front of you. You ask about a specific matter, and the system uses Zi Wei Star-Picking to interpret star symbolism and provide situational insight, risk reminders and practical guidance.</p>
+        </div>
+        <div class="paper-card">
+          <div class="paper-grid">
+            <div class="paper-item">
+              <b data-i18n="aboutCard1Title">Rooted in Zi Wei Dou Shu</b>
+              <span data-i18n="aboutCard1Text">Zi Wei Star-Picking draws from the star system of Zi Wei Dou Shu, using star symbolism to understand people, events, timing and change.</span>
+            </div>
+            <div class="paper-item">
+              <b data-i18n="aboutCard2Title">Star symbolism for questions</b>
+              <span data-i18n="aboutCard2Text">Each star points to a kind of person, matter, momentum or timing, helping users see the key movement behind the present question.</span>
+            </div>
+            <div class="paper-item">
+              <b data-i18n="aboutCard3Title">One matter, one reading</b>
+              <span data-i18n="aboutCard3Text">It is suitable for clear questions about cooperation, relationship, career, wealth, choices and timing.</span>
+            </div>
+            <div class="paper-item">
+              <b data-i18n="aboutCard4Title">A reference for reflection</b>
+              <span data-i18n="aboutCard4Text">The result is designed to inspire thought and support personal judgment, helping you see the issue from another angle.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ziwei">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Zi Wei Dou Shu</p>
+          <h2 data-i18n="ziweiTitle">Zi Wei Dou Shu is a classic Eastern star system.</h2>
+          <p class="section-desc" data-i18n="ziweiDesc">Zi Wei Dou Shu uses stars, palaces and time as its core framework. By observing the combinations formed by stars in different positions, it interprets personality patterns, life domains and changing phases. Zi Wei Star-Picking inherits this star-based language and applies it to divination for specific questions.</p>
+        </div>
+        <div class="grid-3">
+          <article class="feature-card">
+            <div class="icon" data-i18n="ziweiIcon1">★</div>
+            <h3 data-i18n="ziweiCard1Title">Major and auxiliary stars</h3>
+            <p data-i18n="ziweiCard1Text">Zi Wei Dou Shu centers on fourteen major stars, supported by many auxiliary stars. Each star carries its own symbolism and can correspond to personality, situation, relationship and action tendency.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon" data-i18n="ziweiIcon2">宫</div>
+            <h3 data-i18n="ziweiCard2Title">Twelve palaces</h3>
+            <p data-i18n="ziweiCard2Text">The twelve palaces correspond to different life fields, such as self, career, wealth, relationships and movement, allowing star symbolism to land in concrete life contexts.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon" data-i18n="ziweiIcon3">化</div>
+            <h3 data-i18n="ziweiCard3Title">Star interactions</h3>
+            <p data-i18n="ziweiCard3Text">Zi Wei Dou Shu values the interaction among stars and the changes created by strength, placement and transformation. Yuxin Master uses these meanings to clarify the key thread of a present question.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="use">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">What To Ask</p>
+          <h2 data-i18n="useTitle">What can you ask?</h2>
+          <p class="section-desc" data-i18n="useDesc">Zi Wei Star-Picking works best with a specific question. The clearer the question, the easier it is for the reading to become focused, readable and useful.</p>
+        </div>
+        <div class="grid-3">
+          <article class="feature-card">
+            <div class="icon" data-i18n="useIcon1">业</div>
+            <h3 data-i18n="useCard1Title">Career and projects</h3>
+            <p data-i18n="useCard1Text">Can this project move forward? Is it time to change direction? Is the partner reliable? What should be prioritized next?</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon" data-i18n="useIcon2">情</div>
+            <h3 data-i18n="useCard2Title">Relationships and feelings</h3>
+            <p data-i18n="useCard2Text">Is it suitable to communicate now? What is the other person's attitude? Where is the relationship stuck? Is it worth continuing to invest?</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon" data-i18n="useIcon3">财</div>
+            <h3 data-i18n="useCard3Title">Wealth and opportunities</h3>
+            <p data-i18n="useCard3Text">Is it a good time to invest effort or resources? What risks hide inside this opportunity? How might money, return and timing flow?</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon" data-i18n="useIcon4">时</div>
+            <h3 data-i18n="useCard4Title">Timing judgment</h3>
+            <p data-i18n="useCard4Text">Should you advance or hold? Move quickly or slowly? Where are the window, resistance and turning point?</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon" data-i18n="useIcon5">择</div>
+            <h3 data-i18n="useCard5Title">Choice-making</h3>
+            <p data-i18n="useCard5Text">Which is more suitable, A or B? Should the current plan be adjusted? Which contradiction should be solved first?</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon" data-i18n="useIcon6">醒</div>
+            <h3 data-i18n="useCard6Title">Reminders and blind spots</h3>
+            <p data-i18n="useCard6Text">Star symbolism can point to hidden risks, communication traps and overlooked real-world conditions, helping you stay clear-minded.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">How It Works</p>
+          <h2 data-i18n="processTitle">Complete a Star-Picking reading in four steps.</h2>
+          <p class="section-desc" data-i18n="processDesc">The experience stays simple: bring one clear question, and the system completes star-picking, interpretation and guidance.</p>
+        </div>
+        <div class="steps">
+          <article class="step-card">
+            <div class="icon" data-i18n="stepIcon1">问</div>
+            <h3 data-i18n="step1Title">Ask one matter</h3>
+            <p data-i18n="step1Text">Focus on one specific question instead of mixing career, relationship and money into one reading.</p>
+          </article>
+          <article class="step-card">
+            <div class="icon" data-i18n="stepIcon2">摘</div>
+            <h3 data-i18n="step2Title">Pick the stars</h3>
+            <p data-i18n="step2Text">The system uses Zi Wei Star-Picking to draw relevant stars and connect their symbolism with the people, situation and timing involved.</p>
+          </article>
+          <article class="step-card">
+            <div class="icon" data-i18n="stepIcon3">断</div>
+            <h3 data-i18n="step3Title">Form the reading</h3>
+            <p data-i18n="step3Text">The reading presents the overall judgment, key resistance, opportunity signs and areas that deserve caution.</p>
+          </article>
+          <article class="step-card">
+            <div class="icon" data-i18n="stepIcon4">行</div>
+            <h3 data-i18n="step4Title">Receive guidance</h3>
+            <p data-i18n="step4Text">Star signs are translated into practical suggestions: what to do, what to avoid and what to observe first.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="download">
+      <div class="container download-wrap">
+        <div class="section-head">
+          <p class="eyebrow">Start</p>
+          <h2 data-i18n="downloadTitle">Download or open Yuxin Master</h2>
+          <p class="section-desc" data-i18n="downloadDesc">Enter Yuxin Master through iOS, Android, WeChat Mini Program or the web version. The web version links directly to yuxin.ziwei.site.</p>
+        </div>
+        <div class="download-grid">
+          <article class="download-card">
+            <div class="qr-box"><img id="qr-ios" data-i18n-alt="iosAlt" alt="iOS QR code" /></div>
+            <h3 data-i18n="iosTitle">iOS</h3>
+            <p data-i18n="iosText">For iPhone and iPad. Replace this with the App Store link after release.</p>
+            <a id="ios-link" class="download-link" target="_blank" rel="noopener">Loading...</a>
+          </article>
+          <article class="download-card">
+            <div class="qr-box"><img id="qr-android" data-i18n-alt="androidAlt" alt="Android QR code" /></div>
+            <h3 data-i18n="androidTitle">Android</h3>
+            <p data-i18n="androidText">For Android phones. Link to an APK page, app store page or unified download page.</p>
+            <a id="android-link" class="download-link" target="_blank" rel="noopener">Loading...</a>
+          </article>
+          <article class="download-card">
+            <div class="qr-box"><img id="qr-wechat" data-i18n-alt="wechatAlt" alt="WeChat Mini Program QR code" /></div>
+            <h3 data-i18n="wechatTitle">WeChat Mini Program</h3>
+            <p data-i18n="wechatText">Scan with WeChat to enter. Replace with the official Mini Program code after release.</p>
+            <a id="wechat-link" class="download-link" target="_blank" rel="noopener">Loading...</a>
+          </article>
+          <article class="download-card">
+            <a id="web-entry" class="web-box" target="_blank" rel="noopener" data-i18n-aria="webAria"><span data-i18n="webBox">Web</span></a>
+            <h3 data-i18n="webTitle">Web Version</h3>
+            <p data-i18n="webText">No download required. Open the web version and start a Star-Picking reading directly.</p>
+            <a id="web-link" class="download-link" target="_blank" rel="noopener">Loading...</a>
+          </article>
+        </div>
+        <p class="download-note" data-i18n="downloadNote">Tip: iOS, Android and WeChat entries can be replaced with official app store links or Mini Program codes after launch. The web entry currently points to yuxin.ziwei.site.</p>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2 data-i18n="faqTitle">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-grid">
+          <article class="faq-card">
+            <h3 data-i18n="faq1Title">How is Zi Wei Star-Picking related to Zi Wei Dou Shu?</h3>
+            <p data-i18n="faq1Text">They share the same star tradition. Zi Wei Star-Picking uses star symbolism to enter a specific question and provide an immediate reading for that matter.</p>
+          </article>
+          <article class="faq-card">
+            <h3 data-i18n="faq2Title">What questions are suitable?</h3>
+            <p data-i18n="faq2Text">Career progress, relationship communication, wealth opportunities, cooperation judgment and timing choices are all suitable for Star-Picking reference.</p>
+          </article>
+          <article class="faq-card">
+            <h3 data-i18n="faq3Title">How should I ask for a better reading?</h3>
+            <p data-i18n="faq3Text">A specific, focused question works best. For example, "Is this cooperation suitable to push forward this month?" is clearer than "What will happen to me?"</p>
+          </article>
+          <article class="faq-card">
+            <h3 data-i18n="faq4Title">Is the result the final answer?</h3>
+            <p data-i18n="faq4Text">The result is for cultural entertainment and personal reflection. It does not constitute legal, medical, investment, financial or other professional advice.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> <span data-i18n="footerBrand">Yuxin Master. All rights reserved.</span></div>
+      <a class="back-to-top" href="#top" data-i18n="backTop">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const DOWNLOAD_LINKS = {
+      ios: "https://yuxinmaster.site/download/ios",
+      android: "https://yuxinmaster.site/download/android",
+      wechat: "https://yuxinmaster.site/wechat-mini-program",
+      web: "https://yuxin.ziwei.site/"
+    };
+
+    const I18N = {
+      en: {
+        htmlLang: "en",
+        title: "Yuxin Master|Zi Wei Star-Picking Divination",
+        description: "Yuxin Master offers Zi Wei Star-Picking divination for specific questions, drawing on Zi Wei Dou Shu star symbolism to provide situational insight, key judgment and practical guidance.",
+        ogTitle: "Yuxin Master|Zi Wei Star-Picking Divination",
+        ogDescription: "Ask one question, pick the stars, and receive Eastern star-based insight for the matter at hand.",
+        brandAria: "Yuxin Master homepage",
+        mainNavAria: "Main navigation",
+        productTagsAria: "Product features",
+        webAria: "Open web version",
+        brandName: "Yuxin Master",
+        brandSub: "Zi Wei Star-Picking",
+        navAbout: "Star-Picking",
+        navZiwei: "Zi Wei Dou Shu",
+        navUse: "What to Ask",
+        navProcess: "How It Works",
+        navDownload: "Start Now",
+        mobileUse: "Start",
+        heroKicker: "Zi Wei Star-Picking · One Question, One Reading",
+        heroTitle: "Yuxin Master",
+        heroSubtitle: "玉心道长",
+        heroLead: "Use <em>Zi Wei Star-Picking</em> for divination around a specific question. Rooted in the same star tradition as Zi Wei Dou Shu, it draws on star symbolism to reveal situational insight, key judgment and practical guidance.",
+        heroPrimary: "Start a Reading",
+        heroSecondary: "Learn the Method",
+        tag1: "Zi Wei Stars · Divination",
+        tag2: "One question · Pick the stars",
+        tag3: "iOS · Android · WeChat Mini Program · Web",
+        screenBrand: "Yuxin Master",
+        screenMode: "Star Reading",
+        readingLabel: "Stars picked: Tian Ji · Tai Yin · Tian Liang",
+        readingTitle: "For this matter, clarify the facts before taking action.",
+        readingText: "The star signs suggest that the situation can move forward, but the key is to gather the missing information before deciding.",
+        line1Label: "Question",
+        line1Value: "Career choice",
+        line2Label: "Pattern",
+        line2Value: "Plan before action",
+        line3Label: "Guidance",
+        line3Value: "Review within 3 days",
+        bubbleUser: "Is this project suitable to push forward now?",
+        bubbleMaster: "It can move forward, but not in a rush. First confirm the key resources and the other party's real attitude.",
+        quoteTitle: "Pick one star, ask one matter",
+        quoteText: "Yuxin Master focuses on the question in front of you. You ask about a specific matter, and the system uses Zi Wei Star-Picking to interpret star symbolism and provide situational insight, risk reminders and practical guidance.",
+        aboutCard1Title: "Rooted in Zi Wei Dou Shu",
+        aboutCard1Text: "Zi Wei Star-Picking draws from the star system of Zi Wei Dou Shu, using star symbolism to understand people, events, timing and change.",
+        aboutCard2Title: "Star symbolism for questions",
+        aboutCard2Text: "Each star points to a kind of person, matter, momentum or timing, helping users see the key movement behind the present question.",
+        aboutCard3Title: "One matter, one reading",
+        aboutCard3Text: "It is suitable for clear questions about cooperation, relationship, career, wealth, choices and timing.",
+        aboutCard4Title: "A reference for reflection",
+        aboutCard4Text: "The result is designed to inspire thought and support personal judgment, helping you see the issue from another angle.",
+        ziweiTitle: "Zi Wei Dou Shu is a classic Eastern star system.",
+        ziweiDesc: "Zi Wei Dou Shu uses stars, palaces and time as its core framework. By observing the combinations formed by stars in different positions, it interprets personality patterns, life domains and changing phases. Zi Wei Star-Picking inherits this star-based language and applies it to divination for specific questions.",
+        ziweiIcon1: "★",
+        ziweiCard1Title: "Major and auxiliary stars",
+        ziweiCard1Text: "Zi Wei Dou Shu centers on fourteen major stars, supported by many auxiliary stars. Each star carries its own symbolism and can correspond to personality, situation, relationship and action tendency.",
+        ziweiIcon2: "宫",
+        ziweiCard2Title: "Twelve palaces",
+        ziweiCard2Text: "The twelve palaces correspond to different life fields, such as self, career, wealth, relationships and movement, allowing star symbolism to land in concrete life contexts.",
+        ziweiIcon3: "化",
+        ziweiCard3Title: "Star interactions",
+        ziweiCard3Text: "Zi Wei Dou Shu values the interaction among stars and the changes created by strength, placement and transformation. Yuxin Master uses these meanings to clarify the key thread of a present question.",
+        useTitle: "What can you ask?",
+        useDesc: "Zi Wei Star-Picking works best with a specific question. The clearer the question, the easier it is for the reading to become focused, readable and useful.",
+        useIcon1: "业",
+        useCard1Title: "Career and projects",
+        useCard1Text: "Can this project move forward? Is it time to change direction? Is the partner reliable? What should be prioritized next?",
+        useIcon2: "情",
+        useCard2Title: "Relationships and feelings",
+        useCard2Text: "Is it suitable to communicate now? What is the other person's attitude? Where is the relationship stuck? Is it worth continuing to invest?",
+        useIcon3: "财",
+        useCard3Title: "Wealth and opportunities",
+        useCard3Text: "Is it a good time to invest effort or resources? What risks hide inside this opportunity? How might money, return and timing flow?",
+        useIcon4: "时",
+        useCard4Title: "Timing judgment",
+        useCard4Text: "Should you advance or hold? Move quickly or slowly? Where are the window, resistance and turning point?",
+        useIcon5: "择",
+        useCard5Title: "Choice-making",
+        useCard5Text: "Which is more suitable, A or B? Should the current plan be adjusted? Which contradiction should be solved first?",
+        useIcon6: "醒",
+        useCard6Title: "Reminders and blind spots",
+        useCard6Text: "Star symbolism can point to hidden risks, communication traps and overlooked real-world conditions, helping you stay clear-minded.",
+        processTitle: "Complete a Star-Picking reading in four steps.",
+        processDesc: "The experience stays simple: bring one clear question, and the system completes star-picking, interpretation and guidance.",
+        stepIcon1: "问",
+        step1Title: "Ask one matter",
+        step1Text: "Focus on one specific question instead of mixing career, relationship and money into one reading.",
+        stepIcon2: "摘",
+        step2Title: "Pick the stars",
+        step2Text: "The system uses Zi Wei Star-Picking to draw relevant stars and connect their symbolism with the people, situation and timing involved.",
+        stepIcon3: "断",
+        step3Title: "Form the reading",
+        step3Text: "The reading presents the overall judgment, key resistance, opportunity signs and areas that deserve caution.",
+        stepIcon4: "行",
+        step4Title: "Receive guidance",
+        step4Text: "Star signs are translated into practical suggestions: what to do, what to avoid and what to observe first.",
+        downloadTitle: "Download or open Yuxin Master",
+        downloadDesc: "Enter Yuxin Master through iOS, Android, WeChat Mini Program or the web version. The web version links directly to yuxin.ziwei.site.",
+        iosAlt: "iOS QR code",
+        androidAlt: "Android QR code",
+        wechatAlt: "WeChat Mini Program QR code",
+        iosTitle: "iOS",
+        androidTitle: "Android",
+        wechatTitle: "WeChat Mini Program",
+        webTitle: "Web Version",
+        iosText: "For iPhone and iPad. Replace this with the App Store link after release.",
+        androidText: "For Android phones. Link to an APK page, app store page or unified download page.",
+        wechatText: "Scan with WeChat to enter. Replace with the official Mini Program code after release.",
+        webText: "No download required. Open the web version and start a Star-Picking reading directly.",
+        webBox: "Web",
+        downloadNote: "Tip: iOS, Android and WeChat entries can be replaced with official app store links or Mini Program codes after launch. The web entry currently points to yuxin.ziwei.site.",
+        faqTitle: "Frequently Asked Questions",
+        faq1Title: "How is Zi Wei Star-Picking related to Zi Wei Dou Shu?",
+        faq1Text: "They share the same star tradition. Zi Wei Star-Picking uses star symbolism to enter a specific question and provide an immediate reading for that matter.",
+        faq2Title: "What questions are suitable?",
+        faq2Text: "Career progress, relationship communication, wealth opportunities, cooperation judgment and timing choices are all suitable for Star-Picking reference.",
+        faq3Title: "How should I ask for a better reading?",
+        faq3Text: "A specific, focused question works best. For example, \"Is this cooperation suitable to push forward this month?\" is clearer than \"What will happen to me?\"",
+        faq4Title: "Is the result the final answer?",
+        faq4Text: "The result is for cultural entertainment and personal reflection. It does not constitute legal, medical, investment, financial or other professional advice.",
+        footerBrand: "Yuxin Master. All rights reserved.",
+        backTop: "Back to top ↑"
+      },
+      "zh-CN": {
+        htmlLang: "zh-CN",
+        title: "玉心道长｜紫微斗数星曜占卜",
+        description: "玉心道长提供紫微斗数星曜占卜服务，针对具体问题提问，通过星曜象征提供情境洞察、关键判断与实用指引。",
+        ogTitle: "玉心道长｜紫微斗数星曜占卜",
+        ogDescription: "问一个问题，摘一颗星，获得东方星曜智慧指引。",
+        brandAria: "玉心道长首页",
+        mainNavAria: "主导航",
+        productTagsAria: "产品特点",
+        webAria: "打开网页版",
+        brandName: "玉心道长",
+        brandSub: "紫微星曜占卜",
+        navAbout: "星曜占卜",
+        navZiwei: "紫微斗数",
+        navUse: "问些什么",
+        navProcess: "如何运作",
+        navDownload: "立即开始",
+        mobileUse: "开始",
+        heroKicker: "紫微星曜占卜 · 一事一问",
+        heroTitle: "玉心道长",
+        heroSubtitle: "玉心道长",
+        heroLead: "使用<em>紫微星曜占卜</em>针对具体问题进行占卜。根植于紫微斗数星曜传统，通过星曜象征揭示情境洞察、关键判断与实用指引。",
+        heroPrimary: "开始占卜",
+        heroSecondary: "了解方法",
+        tag1: "紫微星曜 · 占卜",
+        tag2: "一事一占 · 星曜指引",
+        tag3: "iOS · Android · 微信小程序 · 网页",
+        screenBrand: "玉心道长",
+        screenMode: "星曜占卜",
+        readingLabel: "星曜：天机 · 太阴 · 天梁",
+        readingTitle: "此事宜先理清事实，再行决策。",
+        readingText: "星曜显示局势可以推进，关键在于先收集缺失的信息再作决定。",
+        line1Label: "问题",
+        line1Value: "事业抉择",
+        line2Label: "格局",
+        line2Value: "谋定后动",
+        line3Label: "指引",
+        line3Value: "三日内复盘",
+        bubbleUser: "这个项目现在适合推进吗？",
+        bubbleMaster: "可以推进，但不宜急躁。先确认关键资源和对方的真实态度。",
+        quoteTitle: "摘一星，问一事",
+        quoteText: "玉心道长专注于你眼前的问题。你问一件具体的事，系统通过紫微星曜解读星曜象征，提供情境洞察、风险提醒与实用指引。",
+        aboutCard1Title: "根植于紫微斗数",
+        aboutCard1Text: "紫微星曜占卜源自紫微斗数的星曜体系，运用星曜象征解读人物、事态、时机与变化。",
+        aboutCard2Title: "以星曜象征解问",
+        aboutCard2Text: "每颗星曜对应一类人物、事项、气势或时机，帮助用户看清当下问题背后的关键动向。",
+        aboutCard3Title: "一事一占",
+        aboutCard3Text: "适合关于合作、感情、事业、财富、抉择与时机的明确问题。",
+        aboutCard4Title: "启发思考的参考",
+        aboutCard4Text: "结果旨在启发思考、辅助判断，帮助你从另一个角度看问题。",
+        ziweiTitle: "紫微斗数是东方经典星曜体系。",
+        ziweiDesc: "紫微斗数以星曜、宫位与时间为框架，通过观察星曜在不同位置的组合，解读性格特质、人生领域与变化阶段。紫微星曜占卜继承这一星曜语言，并将其应用于具体问题的占卜。",
+        ziweiIcon1: "★",
+        ziweiCard1Title: "主星与辅星",
+        ziweiCard1Text: "紫微斗数以十四颗主星为核心，辅以众多辅星。每颗星曜各有其象征意义，可对应性格、事态、关系与行动倾向。",
+        ziweiIcon2: "宫",
+        ziweiCard2Title: "十二宫位",
+        ziweiCard2Text: "十二宫位对应不同的人生领域，如事业、财富、感情、迁移等，让星曜象征落地于具体人生情境。",
+        ziweiIcon3: "化",
+        ziweiCard3Title: "星曜互动",
+        ziweiCard3Text: "紫微斗数重视星曜之间的互动，以及其因强弱、位置、化曜产生的变化。玉心道长运用这些意涵，厘清当下问题的关键脉络。",
+        useTitle: "可以问些什么？",
+        useDesc: "紫微星曜占卜最适合具体明确的问题。问题越清晰，占卜结果越聚焦、越有参考价值。",
+        useIcon1: "业",
+        useCard1Title: "事业与项目",
+        useCard1Text: "这个项目能推进吗？该转向吗？合伙人人可靠吗？下一步该优先什么？",
+        useIcon2: "情",
+        useCard2Title: "感情与人际",
+        useCard2Text: "现在适合沟通吗？对方态度如何？感情卡在哪里？还值得继续投入吗？",
+        useIcon3: "财",
+        useCard3Title: "财富与机会",
+        useCard3Text: "现在投入精力或资源的时机好吗？这个机会里藏着哪些风险？钱、回报、时机可能如何流动？",
+        useIcon4: "时",
+        useCard4Title: "时机判断",
+        useCard4Text: "该进还是该守？要快还是慢？窗口在哪里？阻力在哪里？转折点在哪里？",
+        useIcon5: "择",
+        useCard5Title: "抉择参考",
+        useCard5Text: "A还是B更合适？现有方案需要调整吗？哪一对矛盾该优先解决？",
+        useIcon6: "醒",
+        useCard6Title: "提醒与盲点",
+        useCard6Text: "星曜象征可以指出隐藏风险、沟通陷阱和被忽略的现实条件，帮助你保持清醒。",
+        processTitle: "四步完成星曜占卜。",
+        processDesc: "体验简单：带来一个明确的问题，系统完成星曜摘取、解读与指引。",
+        stepIcon1: "问",
+        step1Title: "问一件事",
+        step1Text: "聚焦一个具体问题，不要把事业、感情、财富混在一个占卜里。",
+        stepIcon2: "摘",
+        step2Title: "摘取星曜",
+        step2Text: "系统通过紫微星曜占卜摘取相关星曜，将星曜象征与涉及的人物、事态、时机相联结。",
+        stepIcon3: "断",
+        step3Title: "形成解读",
+        step3Text: "解读呈现整体判断、关键阻力、机会征兆与需要留意的部分。",
+        stepIcon4: "行",
+        step4Title: "获得指引",
+        step4Text: "星曜象征转化为实用建议：该做什么、该避免什么、先观察什么。",
+        downloadTitle: "下载或打开玉心道长",
+        downloadDesc: "通过 iOS、Android、微信小程序或网页版进入玉心道长。网页版直接链接到 yuxin.ziwei.site。",
+        iosAlt: "iOS 二维码",
+        androidAlt: "Android 二维码",
+        wechatAlt: "微信小程序二维码",
+        iosTitle: "iOS",
+        androidTitle: "Android",
+        wechatTitle: "微信小程序",
+        webTitle: "网页版",
+        iosText: "适用于 iPhone 和 iPad。上线后替换为 App Store 链接。",
+        androidText: "适用于 Android 手机。链接到 APK 页面、应用商店页面或统一下载页面。",
+        wechatText: "用微信扫描进入。上线后替换为官方小程序码。",
+        webText: "无需下载。打开网页版即可直接开始星曜占卜。",
+        webBox: "网页",
+        downloadNote: "提示：iOS、Android 和微信入口在上线后可替换为官方应用商店链接或小程序码。网页版目前指向 yuxin.ziwei.site。",
+        faqTitle: "常见问题",
+        faq1Title: "紫微星曜占卜和紫微斗数是什么关系？",
+        faq1Text: "它们同属紫微斗数星曜传统。紫微星曜占卜运用星曜象征切入具体问题，为该事项提供即时解读。",
+        faq2Title: "哪些问题适合问？",
+        faq2Text: "事业进展、感情沟通、财富机会、合作判断、时机抉择都适合参考星曜占卜。",
+        faq3Title: "怎样问效果更好？",
+        faq3Text: "具体、聚焦的问题效果最好。例如「本月推进这个合作合适吗？」就比「我的命运如何？」清晰得多。",
+        faq4Title: "结果是最终答案吗？",
+        faq4Text: "结果仅供文化娱乐与个人思考参考，不构成法律、医疗、投资、金融或其他专业建议。",
+        footerBrand: "玉心道长版权所有",
+        backTop: "返回顶部 ↑"
+      },
+      "zh-TW": {
+        htmlLang: "zh-TW",
+        title: "玉心道長｜紫微斗數星曜占卜",
+        description: "玉心道長提供紫微斗數星曜占卜服務，針對具體問題提問，透過星曜象徵提供情境洞察、關鍵判斷與實用指引。",
+        ogTitle: "玉心道長｜紫微斗數星曜占卜",
+        ogDescription: "問一個問題，摘一顆星，獲得東方星曜智慧指引。",
+        brandAria: "玉心道長首頁",
+        mainNavAria: "主導航",
+        productTagsAria: "產品特點",
+        webAria: "打開網頁版",
+        brandName: "玉心道長",
+        brandSub: "紫微星曜占卜",
+        navAbout: "星曜占卜",
+        navZiwei: "紫微斗數",
+        navUse: "問些什麼",
+        navProcess: "如何運作",
+        navDownload: "立即開始",
+        mobileUse: "開始",
+        heroKicker: "紫微星曜占卜 · 一事一問",
+        heroTitle: "玉心道長",
+        heroSubtitle: "玉心道長",
+        heroLead: "使用<em>紫微星曜占卜</em>針對具體問題進行占卜。根植於紫微斗數星曜傳統，透過星曜象徵揭示情境洞察、關鍵判斷與實用指引。",
+        heroPrimary: "開始占卜",
+        heroSecondary: "了解方法",
+        tag1: "紫微星曜 · 占卜",
+        tag2: "一事一問 · 星曜指引",
+        tag3: "iOS · Android · 微信小程序 · 網頁",
+        screenBrand: "玉心道長",
+        screenMode: "星曜占卜",
+        readingLabel: "星曜：天機 · 太陰 · 天梁",
+        readingTitle: "此事宜先釐清事實，再行決策。",
+        readingText: "星曜顯示局勢可以推進，關鍵在於先收集缺失的資訊再作決定。",
+        line1Label: "問題",
+        line1Value: "事業抉擇",
+        line2Label: "格局",
+        line2Value: "謀定後動",
+        line3Label: "指引",
+        line3Value: "三日內複盤",
+        bubbleUser: "這個項目現在適合推進嗎？",
+        bubbleMaster: "可以推進，但不宜急躁。先確認關鍵資源和對方的真實態度。",
+        quoteTitle: "摘一星，問一事",
+        quoteText: "玉心道長專注於你眼前的問題。你問一件具體的事，系統通過紫微星曜解讀星曜象徵，提供情境洞察、風險提醒與實用指引。",
+        aboutCard1Title: "根植於紫微斗數",
+        aboutCard1Text: "紫微星曜占卜源自紫微斗數的星曜體系，運用星曜象徵解讀人物、事態、時機與變化。",
+        aboutCard2Title: "以星曜象徵解問",
+        aboutCard2Text: "每顆星曜對應一類人物、事項、氣勢或時機，幫助用戶看清當下問題背後的關鍵動向。",
+        aboutCard3Title: "一事一占",
+        aboutCard3Text: "適合關於合作、感情、事業、財富、抉擇與時機的明確問題。",
+        aboutCard4Title: "啟發思考的參考",
+        aboutCard4Text: "結果旨在啟發思考、輔助判斷，幫助你從另一個角度看問題。",
+        ziweiTitle: "紫微斗數是東方經典星曜體系。",
+        ziweiDesc: "紫微斗數以星曜、宮位與時間為框架，透過觀察星曜在不同位置的組合，解讀性格特質、人生領域與變化階段。紫微星曜占卜繼承這一星曜語言，並將其應用於具體問題的占卜。",
+        ziweiIcon1: "★",
+        ziweiCard1Title: "主星與輔星",
+        ziweiCard1Text: "紫微斗數以十四顆主星為核心，輔以眾多輔星。每顆星曜各有其象徵意義，可對應性格、事態、關係與行動傾向。",
+        ziweiIcon2: "宮",
+        ziweiCard2Title: "十二宮位",
+        ziweiCard2Text: "十二宮位對應不同的人生領域，如事業、財富、感情、遷移等，讓星曜象徵落地於具體人生情境。",
+        ziweiIcon3: "化",
+        ziweiCard3Title: "星曜互動",
+        ziweiCard3Text: "紫微斗數重視星曜之間的互動，以及其因強弱、位置、化曜產生的變化。玉心道長運用這些意涵，釐清當下問題的關鍵脈絡。",
+        useTitle: "可以問些什麼？",
+        useDesc: "紫微星曜占卜最適合具體明確的問題。問題越清晰，占卜結果越聚焦、越有參考價值。",
+        useIcon1: "業",
+        useCard1Title: "事業與項目",
+        useCard1Text: "這個項目能推進嗎？該轉向嗎？合夥人可靠嗎？下一步該優先什麼？",
+        useIcon2: "情",
+        useCard2Title: "感情與人際",
+        useCard2Text: "現在適合溝通嗎？對方態度如何？感情卡在哪裡？還值得繼續投入嗎？",
+        useIcon3: "財",
+        useCard3Title: "財富與機會",
+        useCard3Text: "現在投入精力或資源的時機好嗎？這個機會裡藏著哪些風險？錢、回報、時機可能如何流動？",
+        useIcon4: "時",
+        useCard4Title: "時機判斷",
+        useCard4Text: "該進還是該守？要快還是慢？窗口在哪裡？阻力在哪裡？轉折點在哪裡？",
+        useIcon5: "擇",
+        useCard5Title: "抉擇參考",
+        useCard5Text: "A還是B更合適？現有方案需要調整嗎？哪一對矛盾該優先解決？",
+        useIcon6: "醒",
+        useCard6Title: "提醒與盲點",
+        useCard6Text: "星曜象徵可以指出隱藏風險、溝通陷阱和被忽略的現實條件，幫助你保持清醒。",
+        processTitle: "四步完成星曜占卜。",
+        processDesc: "體驗簡單：帶來一個明確的問題，系統完成星曜摘取、解讀與指引。",
+        stepIcon1: "問",
+        step1Title: "問一件事",
+        step1Text: "聚焦一個具體問題，不要把事業、感情、財富混在一個占卜裡。",
+        stepIcon2: "摘",
+        step2Title: "摘取星曜",
+        step2Text: "系統通過紫微星曜占卜摘取相關星曜，將星曜象徵與涉及的人物、事態、時機相聯結。",
+        stepIcon3: "斷",
+        step3Title: "形成解讀",
+        step3Text: "解讀呈現整體判斷、關鍵阻力、機會徵兆與需要留意的部分。",
+        stepIcon4: "行",
+        step4Title: "獲得指引",
+        step4Text: "星曜象徵轉化為實用建議：該做什麼、該避免什麼、先觀察什麼。",
+        downloadTitle: "下載或打開玉心道長",
+        downloadDesc: "通過 iOS、Android、微信小程序或網頁版進入玉心道長。網頁版直接連結到 yuxin.ziwei.site。",
+        iosAlt: "iOS 二維碼",
+        androidAlt: "Android 二維碼",
+        wechatAlt: "微信小程序二維碼",
+        iosTitle: "iOS",
+        androidTitle: "Android",
+        wechatTitle: "微信小程序",
+        webTitle: "網頁版",
+        iosText: "適用於 iPhone 和 iPad。上線後替換為 App Store 連結。",
+        androidText: "適用於 Android 手機。連結到 APK 頁面、應用商店頁面或統一下載頁面。",
+        wechatText: "用微信掃描進入。上線後替換為官方小程序碼。",
+        webText: "無需下載。打開網頁版即可直接開始星曜占卜。",
+        webBox: "網頁",
+        downloadNote: "提示：iOS、Android 和微信入口在上線後可替換為官方應用商店連結或小程序碼。網頁版目前指向 yuxin.ziwei.site。",
+        faqTitle: "常見問題",
+        faq1Title: "紫微星曜占卜和紫微斗數是什麼關係？",
+        faq1Text: "它們同屬紫微斗數星曜傳統。紫微星曜占卜運用星曜象徵切入具體問題，為該事項提供即時解讀。",
+        faq2Title: "哪些問題適合問？",
+        faq2Text: "事業進展、感情溝通、財富機會、合作判斷、時機抉擇都適合參考星曜占卜。",
+        faq3Title: "怎樣問效果更好？",
+        faq3Text: "具體、聚焦的問題效果最好。例如「本月推進這個合作合適嗎？」就比「我的命運如何？」清晰得多。",
+        faq4Title: "結果是最終答案嗎？",
+        faq4Text: "結果僅供文化娛樂與個人思考參考，不構成法律、醫療、投資、金融或其他專業建議。",
+        footerBrand: "玉心道長版權所有",
+        backTop: "返回頂部 ↑"
+      }
+    };
+
+    function setLang(lang) {
+      const t = I18N[lang];
+      if (!t) return;
+
+      document.documentElement.lang = t.htmlLang || lang;
+      document.title = t.title || document.title;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+
+      document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const key = el.getAttribute('data-i18n-alt');
+        if (t[key] !== undefined) el.alt = t[key];
+      });
+
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        const key = el.getAttribute('data-i18n-aria');
+        if (t[key] !== undefined) el.setAttribute('aria-label', t[key]);
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && t.description) metaDesc.setAttribute('content', t.description);
+
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle && t.ogTitle) ogTitle.setAttribute('content', t.ogTitle);
+
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc && t.ogDescription) ogDesc.setAttribute('content', t.ogDescription);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.getAttribute('data-lang');
+          if (lang) setLang(lang);
+        });
+      });
+
+      const savedLang = localStorage.getItem('yuxin-lang') || 'en';
+      setLang(savedLang);
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const qrIos = document.getElementById('qr-ios');
+      const qrAndroid = document.getElementById('qr-android');
+      const qrWechat = document.getElementById('qr-wechat');
+      if (qrIos) qrIos.src = 'data:image/svg+xml;base64,';
+      if (qrAndroid) qrAndroid.src = 'data:image/svg+xml;base64,';
+      if (qrWechat) qrWechat.src = 'data:image/svg+xml;base64,';
+
+      const iosLink = document.getElementById('ios-link');
+      const androidLink = document.getElementById('android-link');
+      const wechatLink = document.getElementById('wechat-link');
+      const webLink = document.getElementById('web-link');
+      if (iosLink) iosLink.href = DOWNLOAD_LINKS.ios;
+      if (androidLink) androidLink.href = DOWNLOAD_LINKS.android;
+      if (wechatLink) wechatLink.href = DOWNLOAD_LINKS.wechat;
+      if (webLink) webLink.href = DOWNLOAD_LINKS.web;
+      if (webLink) webLink.textContent = DOWNLOAD_LINKS.web;
+    });
+
+    // Star Canvas Animation (from ziwei.site)
+    (function() {
+      const canvas = document.getElementById('starCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      const stars = [];
+      const numStars = 30;
+      for (let i = 0; i < numStars; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.4 + 0.1,
+          angle: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.005,
+          twinkleSpeed: Math.random() * 0.001 + 0.0005
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const now = Date.now();
+
+        stars.forEach(function(s) {
+          const alpha = 0.3 + 0.7 * Math.abs(Math.sin(now * s.twinkleSpeed + s.angle));
+          const armLength = s.r * 8;
+          const starColorR = 255;
+          const starColorG = 255;
+          const starColorB = 240;
+          const color = 'rgba(' + starColorR + ',' + starColorG + ',' + starColorB + ',' + alpha.toFixed(3) + ')';
+
+          const cx = canvas.width / 2, cy = canvas.height / 2;
+          const dx = s.x - cx, dy = s.y - cy;
+          const cos = Math.cos(s.rotSpeed), sin = Math.sin(s.rotSpeed);
+          const nx = dx * cos - dy * sin, ny = dx * sin + dy * cos;
+          s.x = cx + nx; s.y = cy + ny;
+
+          const glowRadius = s.r * 6;
+          const glowGradient = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, glowRadius);
+          glowGradient.addColorStop(0, 'rgba(224,205,252,' + (alpha * 0.6).toFixed(3) + ')');
+          glowGradient.addColorStop(1, 'rgba(224,205,252,0)');
+          ctx.fillStyle = glowGradient;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, glowRadius, 0, 2 * Math.PI);
+          ctx.fill();
+
+          ctx.fillStyle = color;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, 2 * Math.PI);
+          ctx.closePath();
+
+          ctx.moveTo(s.x, s.y - armLength);
+          ctx.lineTo(s.x + s.r / 2, s.y - s.r);
+          ctx.lineTo(s.x - s.r / 2, s.y - s.r);
+          ctx.closePath();
+
+          ctx.moveTo(s.x + armLength, s.y);
+          ctx.lineTo(s.x + s.r, s.y - s.r / 2);
+          ctx.lineTo(s.x + s.r, s.y + s.r / 2);
+          ctx.closePath();
+
+          ctx.moveTo(s.x, s.y + armLength);
+          ctx.lineTo(s.x - s.r / 2, s.y + s.r);
+          ctx.lineTo(s.x + s.r / 2, s.y + s.r);
+          ctx.closePath();
+
+          ctx.moveTo(s.x - armLength, s.y);
+          ctx.lineTo(s.x - s.r, s.y + s.r / 2);
+          ctx.lineTo(s.x - s.r, s.y - s.r / 2);
+          ctx.closePath();
+
+          ctx.fillStyle = color;
+          ctx.fill();
+        });
+
+        requestAnimationFrame(draw);
+      }
+
+      draw();
+    })();
+  </script>
+</body>
+</html>
