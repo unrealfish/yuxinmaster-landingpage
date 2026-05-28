@@ -88,22 +88,11 @@
     .brand-mark {
       width: 42px;
       height: 42px;
-      display: grid;
-      place-items: center;
       border-radius: 50%;
-      font-weight: 900;
-      color: #201022;
-      background: radial-gradient(circle at 32% 24%, #fff9d8, #f3d38a 42%, #9d6a29 80%);
-      box-shadow: 0 0 28px rgba(243,211,138,.32), inset 0 0 18px rgba(255,255,255,.34);
-      position: relative;
+      object-fit: contain;
+      box-shadow: 0 0 20px rgba(243,211,138,.24);
     }
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      inset: -5px;
-      border-radius: inherit;
-      border: 1px solid rgba(243,211,138,.38);
-    }
+
     .brand-text strong { display: block; font-size: 16px; letter-spacing: .12em; }
     .brand-text span { display: block; margin-top: 2px; color: var(--muted-2); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; }
     .nav-links { display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 14px; white-space: nowrap; }
@@ -404,7 +393,7 @@
   <nav class="nav">
     <div class="nav-inner">
       <a class="brand" href="#top" data-i18n-aria="brandAria">
-        <div class="brand-mark">玉</div>
+        <img class="brand-mark" src="logo.png" alt="Yuxin Master" width="42" height="42" />
         <div class="brand-text">
           <strong data-i18n="brandName">Yuxin Master</strong>
           <span data-i18n="brandSub">Zi Wei Star-Picking</span>
