@@ -322,6 +322,7 @@
     .eyebrow { margin: 0 0 12px; color: var(--gold); font-size: 12px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
     h2 { margin: 0; font-size: clamp(32px, 4vw, 54px); line-height: 1.1; letter-spacing: -.05em; }
     .section-desc { margin: 18px 0 0; color: var(--muted); font-size: 17px; line-height: 1.9; }
+    #ziwei .section-head { max-width: 1080px; }
 
     .intro-panel {
       display: grid;
@@ -483,13 +484,16 @@
     #download .eyebrow { color: #6d3c10; }
     #download h2 { color: #2b193f; }
     #download .section-desc { color: rgba(43,25,63,.76); }
-    .download-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 28px; }
-    .download-card { padding: 22px; text-align: center; overflow: hidden; background: #fff8e8; border-color: rgba(91,50,20,.16); border-top-color: rgba(91,50,20,.22); box-shadow: 0 18px 48px rgba(79,43,11,.16), 0 0 0 1px rgba(255,255,255,.26) inset; }
-    .download-card h3 { color: #3a214e; }
+    .download-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+    .download-card { padding: 24px; text-align: center; overflow: hidden; background: #fff8e8; border-color: rgba(91,50,20,.16); border-top-color: rgba(91,50,20,.22); box-shadow: 0 18px 48px rgba(79,43,11,.16), 0 0 0 1px rgba(255,255,255,.26) inset; }
+    .download-card h3 { margin: 12px 0 18px; color: #3a214e; }
     .download-card p { color: rgba(43,25,63,.72); }
+    .platform-icon { width: 64px; height: 64px; margin: 0 auto; display: grid; place-items: center; color: #2b193f; border-radius: 50%; background: #f4dc9f; border: 1px solid rgba(91,50,20,.16); box-shadow: 0 14px 30px rgba(79,43,11,.12), inset 0 0 18px rgba(255,255,255,.26); }
+    .platform-icon svg { width: 34px; height: 34px; display: block; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .platform-icon svg.solid-icon { fill: currentColor; stroke: none; }
     .qr-box { width: 208px; height: 208px; max-width: 100%; margin: 0 auto 18px; padding: 12px; border-radius: 24px; background: #fffaf0; display: grid; place-items: center; box-shadow: 0 18px 42px rgba(0,0,0,.3), 0 0 0 1px rgba(243,211,138,.34), 0 0 26px rgba(243,211,138,.09); }
     .web-box { width: 208px; height: 208px; max-width: 100%; margin: 0 auto 18px; padding: 18px; border-radius: 24px; background: #fff3c6; color: #2b193f; display: grid; place-items: center; box-shadow: 0 18px 42px rgba(0,0,0,.3), 0 0 0 1px rgba(243,211,138,.34), 0 0 26px rgba(243,211,138,.09); }
-    .web-box span { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 18px; border: 1px solid rgba(61,28,107,.16); font-size: 32px; font-weight: 900; letter-spacing: .05em; }
+    .web-box span { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 18px; border: 1px solid rgba(61,28,107,.16); font-size: 26px; font-weight: 900; letter-spacing: 0; }
     .qr-box img { width: 100%; height: 100%; display: block; border-radius: 14px; }
     .download-link { display: block; margin-top: 14px; color: #75420f; font-size: 13px; word-break: break-all; line-height: 1.5; }
     .download-note { margin: 20px 0 0; color: rgba(43,25,63,.68); font-size: 13px; line-height: 1.75; }
@@ -641,7 +645,7 @@
           <div class="tags" data-i18n-aria="productTagsAria">
             <span data-i18n="tag1">Zi Wei Stars · Divination</span>
             <span data-i18n="tag2">One question · Pick the stars</span>
-            <span data-i18n="tag3">iOS · Android · WeChat Mini Program · Web</span>
+            <span data-i18n="tag3">iOS · Android · Web</span>
           </div>
         </div>
 
@@ -656,7 +660,7 @@
               </div>
               <div class="star-pick">
                 <span class="reading-label" data-i18n="readingLabel">Stars picked: Tian Ji · Tai Yin · Tian Liang</span>
-                <div class="reading-title" data-i18n="readingTitle">For this matter, clarify the facts before taking action.</div>
+                <div class="reading-title" data-i18n="readingTitle">For this matter, clarify the facts before taking action</div>
                 <p class="reading-text" data-i18n="readingText">The star signs suggest that the situation can move forward, but the key is to gather the missing information before deciding.</p>
                 <div class="star-lines">
                   <div class="star-line"><span data-i18n="line1Label">Question</span><b data-i18n="line1Value">Career choice</b></div>
@@ -678,7 +682,7 @@
       <div class="container intro-panel">
         <div class="quote-card">
           <div class="quote-mark">"</div>
-          <blockquote data-i18n="quoteTitle">Pick stars, ask one matter.</blockquote>
+          <blockquote data-i18n="quoteTitle">Pick stars, ask one matter</blockquote>
           <p data-i18n="quoteText">Yuxin Master focuses on the question in front of you. You ask about a specific matter, then pick multiple stars according to the question to form a focused reading.</p>
         </div>
         <div class="paper-card">
@@ -708,7 +712,7 @@
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Zi Wei Dou Shu</p>
-          <h2 data-i18n="ziweiTitle">Zi Wei Dou Shu is a classic Eastern star system.</h2>
+          <h2 data-i18n="ziweiTitle">Zi Wei Dou Shu is a classic Eastern star system</h2>
           <p class="section-desc" data-i18n="ziweiDesc">Zi Wei Dou Shu ranks first among China's Five Great Divine Arts and is known as the "Number One Divine Art of China." In ancient times it was revered as imperial learning. During the Ming and Qing dynasties, the state established the Qintianjian to study and preserve it, and access was limited to members of the imperial family or officials personally appointed by the emperor.</p>
         </div>
         <div class="ziwei-text-grid">
@@ -732,7 +736,7 @@
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">What To Ask</p>
-          <h2 data-i18n="useTitle">What can you ask?</h2>
+          <h2 data-i18n="useTitle">What can you ask</h2>
           <p class="section-desc" data-i18n="useDesc">Zi Wei Star-Picking Art works best with a specific question. The clearer the question, the easier it is for the reading to become focused, readable and useful.</p>
         </div>
         <div class="grid-3">
@@ -771,24 +775,24 @@
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">How It Works</p>
-          <h2 data-i18n="processTitle">Complete a Zi Wei Star-Picking Art reading in three steps.</h2>
-          <p class="section-desc" data-i18n="processDesc">The experience stays simple: ask one clear question, pick the stars, and form the reading.</p>
+          <h2 data-i18n="processTitle">Complete a Zi Wei Star-Picking Art reading in three steps</h2>
+          <p class="section-desc" data-i18n="processDesc">The experience stays simple: ask, pick stars, and read.</p>
         </div>
         <div class="steps">
           <article class="step-card">
             <div class="icon" data-i18n="stepIcon1">问</div>
-            <h3 data-i18n="step1Title">Ask one matter</h3>
-            <p data-i18n="step1Text">Focus on one specific question instead of mixing multiple questions into one reading.</p>
+            <h3 data-i18n="step1Title">Ask</h3>
+            <p data-i18n="step1Text">One matter, one question. Keep your attention on one specific issue, and do not mix multiple questions into a single reading.</p>
           </article>
           <article class="step-card">
             <div class="icon" data-i18n="stepIcon2">摘</div>
-            <h3 data-i18n="step2Title">Pick the stars</h3>
-            <p data-i18n="step2Text">Use Zi Wei Star-Picking Art to pick multiple stars according to the question, then connect their combined symbolism with the people, situation and timing involved.</p>
+            <h3 data-i18n="step2Title">Pick Stars</h3>
+            <p data-i18n="step2Text">Choose the stars that call to you from among the many shimmering stars, then wait for the star signs to appear.</p>
           </article>
           <article class="step-card">
             <div class="icon" data-i18n="stepIcon3">解</div>
-            <h3 data-i18n="step3Title">Form the reading</h3>
-            <p data-i18n="step3Text">The reading presents the overall judgment, key resistance, opportunity signs and areas that deserve caution.</p>
+            <h3 data-i18n="step3Title">Read</h3>
+            <p data-i18n="step3Text">Wait patiently. Yuxin Master will read the hidden meaning within the revealed stars and answer the question in your heart.</p>
           </article>
         </div>
       </div>
@@ -803,31 +807,30 @@
         </div>
         <div class="download-grid">
           <article class="download-card">
+            <div class="platform-icon" aria-hidden="true">
+              <svg class="solid-icon" viewBox="0 0 24 24"><path d="M15.8 2.3c.1 1.5-.5 2.7-1.5 3.6-.9.8-2 1.3-3.2 1.2-.1-1.4.6-2.7 1.5-3.5.9-.8 2.2-1.4 3.2-1.3Z"></path><path d="M20.1 17.4c-.5 1.2-.8 1.8-1.5 2.9-1 .1-1.7.7-2.8.7-1.1 0-1.5-.7-2.8-.7-1.2 0-1.7.7-2.8.7-1.1 0-1.9-1.1-2.5-2-1.4-2-2.4-5.7-1-8.2.8-1.4 2.1-2.2 3.5-2.2 1.1 0 2.1.7 2.8.7.6 0 1.8-.9 3.1-.8.5 0 2.1.2 3.1 1.7-2.7 1.7-2.3 5.5.9 7.2Z"></path></svg>
+            </div>
+            <h3 data-i18n="iosTitle">iOS</h3>
             <div class="qr-box"><img id="qr-ios" data-i18n-alt="iosAlt" alt="iOS QR code" /></div>
-            <h3 data-i18n="iosTitle">iOS App</h3>
-            <p data-i18n="iosText">For iPhone and iPad. Supports Apple login, Google login and Apple in-app purchase credits.</p>
-            <a id="ios-link" class="download-link" href="https://app.yuxinmaster.site/" target="_blank" rel="noopener">https://app.yuxinmaster.site/</a>
+            <a id="ios-link" class="download-link" href="https://app.yuxinmaster.site/" target="_blank" rel="noopener" data-i18n="iosLinkText">Apple Store</a>
           </article>
           <article class="download-card">
-            <div class="qr-box"><img id="qr-android" data-i18n-alt="androidAlt" alt="Android QR code" /></div>
+            <div class="platform-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M8 7 6.2 4.8"></path><path d="m16 7 1.8-2.2"></path><path d="M7 10.5c0-2.2 2.2-4 5-4s5 1.8 5 4"></path><path d="M6.5 10.5h11v7.2c0 .9-.7 1.6-1.6 1.6H8.1c-.9 0-1.6-.7-1.6-1.6v-7.2Z"></path><path d="M4.5 11.2v5.2"></path><path d="M19.5 11.2v5.2"></path><path d="M9.5 19.3v2"></path><path d="M14.5 19.3v2"></path><path d="M10 9.5h.1"></path><path d="M14 9.5h.1"></path></svg>
+            </div>
             <h3 data-i18n="androidTitle">Android</h3>
-            <p data-i18n="androidText">Android packaging is supported by the UniApp project. Use the H5 version if an APK is not available yet.</p>
-            <a id="android-link" class="download-link" href="https://app.yuxinmaster.site/" target="_blank" rel="noopener">https://app.yuxinmaster.site/</a>
+            <div class="qr-box"><img id="qr-android" data-i18n-alt="androidAlt" alt="Android QR code" /></div>
+            <a id="android-link" class="download-link" href="https://app.yuxinmaster.site/" target="_blank" rel="noopener" data-i18n="androidLinkText">Android Store</a>
           </article>
           <article class="download-card">
-            <div class="qr-box"><img id="qr-wechat" data-i18n-alt="wechatAlt" alt="WeChat Mini Program QR code" /></div>
-            <h3 data-i18n="wechatTitle">WeChat Mini Program</h3>
-            <p data-i18n="wechatText">The project keeps Mini Program pages and compliance routes. Use the official code when the Mini Program entry is published.</p>
-            <a id="wechat-link" class="download-link" href="https://app.yuxinmaster.site/" target="_blank" rel="noopener">https://app.yuxinmaster.site/</a>
-          </article>
-          <article class="download-card">
+            <div class="platform-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9"></circle><path d="M3.6 9h16.8"></path><path d="M3.6 15h16.8"></path><path d="M12 3c2.2 2.4 3.2 5.4 3.2 9s-1 6.6-3.2 9"></path><path d="M12 3c-2.2 2.4-3.2 5.4-3.2 9s1 6.6 3.2 9"></path></svg>
+            </div>
+            <h3 data-i18n="webTitle">Web</h3>
             <a id="web-entry" class="web-box" href="https://app.yuxinmaster.site/" target="_blank" rel="noopener" data-i18n-aria="webAria"><span data-i18n="webBox">Web</span></a>
-            <h3 data-i18n="webTitle">H5 Web Version</h3>
-            <p data-i18n="webText">No download required. Open the H5 version, log in with email or phone verification, and start a Zi Wei Star-Picking Art reading directly.</p>
-            <a id="web-link" class="download-link" href="https://app.yuxinmaster.site/" target="_blank" rel="noopener">https://app.yuxinmaster.site/</a>
+            <a id="web-link" class="download-link" href="https://app.yuxinmaster.site/" target="_blank" rel="noopener">app.yuxinmaster.site</a>
           </article>
         </div>
-        <p class="download-note" data-i18n="downloadNote">The iOS app is version 1.0.0 and uses bundle ID site.yuxinmaster.app. For support, refunds or account questions, contact info@yuxinmaster.site.</p>
       </div>
     </section>
 
@@ -839,19 +842,19 @@
         </div>
         <div class="faq-grid">
           <article class="faq-card">
-            <h3 data-i18n="faq1Title">How is Zi Wei Star-Picking related to Zi Wei Dou Shu?</h3>
+            <h3 data-i18n="faq1Title">How is Zi Wei Star-Picking related to Zi Wei Dou Shu</h3>
             <p data-i18n="faq1Text">They share the same origin and the same star principles. Zi Wei Star-Picking Art applies this lineage to divination for a specific question.</p>
           </article>
           <article class="faq-card">
-            <h3 data-i18n="faq2Title">What questions are suitable?</h3>
+            <h3 data-i18n="faq2Title">What questions are suitable</h3>
             <p data-i18n="faq2Text">Career progress, relationship communication, wealth opportunities, cooperation judgment and timing choices are all suitable for Zi Wei Star-Picking Art reference.</p>
           </article>
           <article class="faq-card">
-            <h3 data-i18n="faq3Title">How should I ask for a better reading?</h3>
+            <h3 data-i18n="faq3Title">How should I ask for a better reading</h3>
             <p data-i18n="faq3Text">A specific, focused question works best. For example, "Is this cooperation suitable to push forward this month?" is clearer than "What will happen to me?"</p>
           </article>
           <article class="faq-card">
-            <h3 data-i18n="faq4Title">Is the result the final answer?</h3>
+            <h3 data-i18n="faq4Title">Is the result the final answer</h3>
             <p data-i18n="faq4Text">The result is for cultural entertainment and personal reflection. It does not constitute legal, medical, investment, financial or other professional advice.</p>
           </article>
         </div>
@@ -870,9 +873,23 @@
     const DOWNLOAD_LINKS = {
       ios: "https://app.yuxinmaster.site/",
       android: "https://app.yuxinmaster.site/",
-      wechat: "https://app.yuxinmaster.site/",
       web: "https://app.yuxinmaster.site/"
     };
+    const PLACEHOLDER_QR = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+        <rect width="160" height="160" fill="#fffaf0"/>
+        <rect x="12" y="12" width="42" height="42" fill="#2b193f"/>
+        <rect x="20" y="20" width="26" height="26" fill="#fffaf0"/>
+        <rect x="28" y="28" width="10" height="10" fill="#2b193f"/>
+        <rect x="106" y="12" width="42" height="42" fill="#2b193f"/>
+        <rect x="114" y="20" width="26" height="26" fill="#fffaf0"/>
+        <rect x="122" y="28" width="10" height="10" fill="#2b193f"/>
+        <rect x="12" y="106" width="42" height="42" fill="#2b193f"/>
+        <rect x="20" y="114" width="26" height="26" fill="#fffaf0"/>
+        <rect x="28" y="122" width="10" height="10" fill="#2b193f"/>
+        <path fill="#2b193f" d="M70 12h10v10H70zM90 12h10v20H90zM70 32h20v10H70zM62 54h10v18H62zM84 54h22v10H84zM118 62h10v10h-10zM140 62h8v18h-8zM72 76h10v10H72zM92 74h18v10H92zM122 82h22v10h-22zM62 94h28v10H62zM102 96h10v20h-10zM122 104h10v10h-10zM142 104h6v28h-6zM64 118h14v10H64zM84 132h18v10H84zM112 124h18v10h-18zM70 144h10v8H70zM106 144h34v8h-34z"/>
+      </svg>
+    `)}`;
 
     const I18N = {
       en: {
@@ -901,11 +918,11 @@
         heroSecondary: "Learn the Method",
         tag1: "Zi Wei Stars · Divination",
         tag2: "One question · Pick multiple stars",
-        tag3: "iOS · Android · WeChat Mini Program · Web",
+        tag3: "iOS · Android · Web",
         screenBrand: "Yuxin Master",
         screenMode: "Star Reading",
         readingLabel: "Stars picked: Tian Ji · Wen Chang · Hua Ke",
-        readingTitle: "For this matter, clarify the facts before taking action.",
+        readingTitle: "For this matter, clarify the facts before taking action",
         readingText: "The star signs suggest that the situation can move forward, but the key is to gather the missing information before deciding.",
         line1Label: "Question",
         line1Value: "Career choice",
@@ -925,7 +942,7 @@
         aboutCard3Text: "It is suitable for clear questions about cooperation, relationship, career, wealth, choices and timing.",
         aboutCard4Title: "A reference for reflection",
         aboutCard4Text: "The result is designed to inspire thought and support personal judgment, helping you see the issue from another angle.",
-        ziweiTitle: "Zi Wei Dou Shu is a classic Eastern star system.",
+        ziweiTitle: "Zi Wei Dou Shu is a classic Eastern star system",
         ziweiDesc: "Zi Wei Dou Shu ranks first among China's Five Great Divine Arts and is known as the \"Number One Divine Art of China.\" In ancient times it was revered as imperial learning. During the Ming and Qing dynasties, the state established the Qintianjian to study and preserve it, and access was limited to members of the imperial family or officials personally appointed by the emperor.",
         ziweiCard1Title: "The star system",
         ziweiCard1Text: "Zi Wei Dou Shu contains a rich system of stars. Each star carries its own symbolism and can correspond to personality, situation, relationship and action tendency.",
@@ -933,7 +950,7 @@
         ziweiCard2Text: "The twelve palaces correspond to different life fields, such as self, career, wealth, relationships and movement, allowing star symbolism to land in concrete life contexts.",
         ziweiCard3Title: "Star interactions",
         ziweiCard3Text: "Zi Wei Dou Shu values the interaction among stars and the changes created by different contexts. Yuxin Master uses these meanings to clarify the key thread of a present question.",
-        useTitle: "What can you ask?",
+        useTitle: "What can you ask",
         useDesc: "Zi Wei Star-Picking Art works best with a specific question. The clearer the question, the easier it is for the reading to become focused, readable and useful.",
         useIcon1: "业",
         useCard1Title: "Career",
@@ -950,40 +967,35 @@
         useCard3Question1: "Is now a good time to invest effort or resources?",
         useCard3Question2: "What risks are hidden inside this opportunity?",
         useCard3Question3: "Can Zhang San repay the money he owes me within one month?",
-        processTitle: "Complete a Zi Wei Star-Picking Art reading in three steps.",
-        processDesc: "The experience stays simple: ask one clear question, pick the stars, and form the reading.",
+        processTitle: "Complete a Zi Wei Star-Picking Art reading in three steps",
+        processDesc: "The experience stays simple: ask, pick stars, and read.",
         stepIcon1: "问",
-        step1Title: "Ask one matter",
-        step1Text: "Focus on one specific question instead of mixing multiple questions into one reading.",
+        step1Title: "Ask",
+        step1Text: "One matter, one question. Keep your attention on one specific issue, and do not mix multiple questions into a single reading.",
         stepIcon2: "摘",
-        step2Title: "Pick the stars",
-        step2Text: "Use Zi Wei Star-Picking Art to pick multiple stars according to the question, then connect their combined symbolism with the people, situation and timing involved.",
+        step2Title: "Pick Stars",
+        step2Text: "Choose the stars that call to you from among the many shimmering stars, then wait for the star signs to appear.",
         stepIcon3: "解",
-        step3Title: "Form the reading",
-        step3Text: "The reading presents the overall judgment, key resistance, opportunity signs and areas that deserve caution.",
+        step3Title: "Read",
+        step3Text: "Wait patiently. Yuxin Master will read the hidden meaning within the revealed stars and answer the question in your heart.",
         downloadTitle: "Download or open Yuxin Master",
-        downloadDesc: "Enter Yuxin Master through the iOS app or H5 web version. The iOS build supports Sign in with Apple, Google login and Apple in-app purchases for reading credits.",
+        downloadDesc: "Choose iOS, Android or Web to enter Yuxin Master.",
         iosAlt: "iOS QR code",
         androidAlt: "Android QR code",
-        wechatAlt: "WeChat Mini Program QR code",
-        iosTitle: "iOS App",
+        iosTitle: "iOS",
         androidTitle: "Android",
-        wechatTitle: "WeChat Mini Program",
-        webTitle: "H5 Web Version",
-        iosText: "For iPhone and iPad. Supports Apple login, Google login and Apple in-app purchase credits.",
-        androidText: "Android packaging is supported by the UniApp project. Use the H5 version if an APK is not available yet.",
-        wechatText: "The project keeps Mini Program pages and compliance routes. Use the official code when the Mini Program entry is published.",
-        webText: "No download required. Open the H5 version, log in with email or phone verification, and start a Zi Wei Star-Picking Art reading directly.",
+        webTitle: "Web",
+        iosLinkText: "Apple Store",
+        androidLinkText: "Android Store",
         webBox: "Web",
-        downloadNote: "The iOS app is version 1.0.0 and uses bundle ID site.yuxinmaster.app. For support, refunds or account questions, contact info@yuxinmaster.site.",
         faqTitle: "Frequently Asked Questions",
-        faq1Title: "How is Zi Wei Star-Picking Art related to Zi Wei Dou Shu?",
+        faq1Title: "How is Zi Wei Star-Picking Art related to Zi Wei Dou Shu",
         faq1Text: "They share the same origin and the same star principles. Zi Wei Star-Picking Art applies this lineage to divination for a specific question.",
-        faq2Title: "What questions are suitable?",
+        faq2Title: "What questions are suitable",
         faq2Text: "Career progress, relationship communication, wealth opportunities, cooperation judgment and timing choices are all suitable for Zi Wei Star-Picking Art reference.",
-        faq3Title: "How should I ask for a better reading?",
+        faq3Title: "How should I ask for a better reading",
         faq3Text: "A specific, focused question works best. For example, \"Is this cooperation suitable to push forward this month?\" is clearer than \"What will happen to me?\"",
-        faq4Title: "Is the result the final answer?",
+        faq4Title: "Is the result the final answer",
         faq4Text: "The result is for cultural entertainment and personal reflection. It does not constitute legal, medical, investment, financial or other professional advice.",
         footerBrand: "Yuxin Master. All rights reserved.",
         backTop: "Back to top ↑"
@@ -1014,11 +1026,11 @@
         heroSecondary: "了解方法",
         tag1: "紫微摘星术 · 占卜",
         tag2: "一事一问 · 摘取多星",
-        tag3: "iOS · Android · 微信小程序 · 网页",
+        tag3: "iOS · Android · Web",
         screenBrand: "玉心道长",
         screenMode: "紫微摘星术",
         readingLabel: "星曜：天机 · 文昌 · 化科",
-        readingTitle: "此事宜先理清事实，再行决策。",
+        readingTitle: "此事宜先理清事实，再行决策",
         readingText: "星曜显示局势可以推进，关键在于先收集缺失的信息再作决定。",
         line1Label: "问题",
         line1Value: "事业抉择",
@@ -1038,7 +1050,7 @@
         aboutCard3Text: "适合关于合作、感情、事业、财富、抉择与时机的明确问题。",
         aboutCard4Title: "启发思考的参考",
         aboutCard4Text: "结果旨在启发思考、辅助判断，帮助你从另一个角度看问题。",
-        ziweiTitle: "紫微斗数是东方经典星曜体系。",
+        ziweiTitle: "紫微斗数是东方经典星曜体系",
         ziweiDesc: "紫微斗数位列中国五大神数之首，号称“中华第一神数”。紫微斗数在古代被尊称为“帝王学”，明清时期国家设置了专职机构“钦天监”对其进行研究和传承，能接触到紫微斗数的人只限于皇族中人或是由皇帝钦点的官员。",
         ziweiCard1Title: "星曜体系",
         ziweiCard1Text: "紫微斗数包含丰富的星曜体系。每颗星曜各有其象征意义，可对应性格、事态、关系与行动倾向。",
@@ -1046,7 +1058,7 @@
         ziweiCard2Text: "十二宫位对应不同的人生领域，如事业、财富、感情、迁移等，让星曜象征落地于具体人生情境。",
         ziweiCard3Title: "星曜互动",
         ziweiCard3Text: "紫微斗数重视星曜之间的互动，以及其因强弱、位置、化曜产生的变化。玉心道长运用这些意涵，厘清当下问题的关键脉络。",
-        useTitle: "可以问些什么？",
+        useTitle: "可以问些什么",
         useDesc: "紫微摘星术最适合具体明确的问题。问题越清晰，摘星解读越聚焦、越有参考价值。",
         useIcon1: "业",
         useCard1Title: "事业",
@@ -1063,40 +1075,35 @@
         useCard3Question1: "现在投入精力或资源的时机好吗？",
         useCard3Question2: "这个机会里藏着哪些风险？",
         useCard3Question3: "张三欠我的钱一个月内是否可以要回来？",
-        processTitle: "三步完成紫微摘星术占卜。",
-        processDesc: "体验简单：问一个明确的问题，完成摘星，形成解读。",
+        processTitle: "三步完成紫微摘星术占卜",
+        processDesc: "体验简单：问事，摘星，解读。",
         stepIcon1: "问",
-        step1Title: "问一件事",
-        step1Text: "聚焦一个具体问题，不要将多个问题混在一次占卜中。",
+        step1Title: "问事",
+        step1Text: "一事一问，注意要聚焦一个具体问题，不要将多个问题混在一次占卜中。",
         stepIcon2: "摘",
         step2Title: "摘星",
-        step2Text: "以紫微摘星术根据问题摘取多颗星曜，将综合星曜象征与涉及的人物、事态、时机相联结。",
+        step2Text: "你需要从众多闪烁的星曜中摘取你当下心仪的星曜，并等待星曜显象。",
         stepIcon3: "解",
-        step3Title: "形成解读",
-        step3Text: "解读呈现整体判断、关键阻力、机会征兆与需要留意的部分。",
+        step3Title: "解读",
+        step3Text: "耐心等待，玉心道长将根据显示的星曜解读其中蕴藏的玄机，并解答你心中的疑问。",
         downloadTitle: "下载或打开玉心道长",
-        downloadDesc: "通过 iOS App 或 H5 网页版进入玉心道长。iOS 版本支持 Apple 登录、Google 登录，并通过 Apple 内购购买解读次数。",
+        downloadDesc: "选择 iOS、Android 或 Web 进入玉心道长。",
         iosAlt: "iOS 二维码",
         androidAlt: "Android 二维码",
-        wechatAlt: "微信小程序二维码",
-        iosTitle: "iOS App",
+        iosTitle: "iOS",
         androidTitle: "Android",
-        wechatTitle: "微信小程序",
-        webTitle: "H5 网页版",
-        iosText: "适用于 iPhone 和 iPad。支持 Apple 登录、Google 登录与 Apple 内购解读次数。",
-        androidText: "UniApp 项目保留 Android 打包能力。暂未提供 APK 时可直接使用 H5 版本。",
-        wechatText: "项目保留小程序页面与合规路径。官方小程序入口发布后可替换为小程序码。",
-        webText: "无需下载。打开 H5 版本，使用邮箱或手机号验证码登录，即可开始紫微摘星术占卜。",
-        webBox: "网页",
-        downloadNote: "iOS App 版本为 1.0.0，Bundle ID 为 site.yuxinmaster.app。客服、退款或账户问题可联系 info@yuxinmaster.site。",
+        webTitle: "Web",
+        iosLinkText: "Apple 商店",
+        androidLinkText: "Android 商店",
+        webBox: "打开 Web",
         faqTitle: "常见问题",
-        faq1Title: "紫微摘星术和紫微斗数是什么关系？",
+        faq1Title: "紫微摘星术和紫微斗数是什么关系",
         faq1Text: "紫微摘星术和紫微斗数同宗同源，使用的是同样的星曜玄理。紫微摘星术将这一玄理用于具体问题的占卜。",
-        faq2Title: "哪些问题适合问？",
+        faq2Title: "哪些问题适合问",
         faq2Text: "事业进展、感情沟通、财富机会、合作判断、时机抉择都适合参考紫微摘星术。",
-        faq3Title: "怎样问效果更好？",
+        faq3Title: "怎样问效果更好",
         faq3Text: "具体、聚焦的问题效果最好。例如「本月推进这个合作合适吗？」就比「我的命运如何？」清晰得多。",
-        faq4Title: "结果是最终答案吗？",
+        faq4Title: "结果是最终答案吗",
         faq4Text: "结果仅供文化娱乐与个人思考参考，不构成法律、医疗、投资、金融或其他专业建议。",
         footerBrand: "玉心道长版权所有",
         backTop: "返回顶部 ↑"
@@ -1127,11 +1134,11 @@
         heroSecondary: "了解方法",
         tag1: "紫微摘星術 · 占卜",
         tag2: "一事一問 · 摘取多星",
-        tag3: "iOS · Android · 微信小程序 · 網頁",
+        tag3: "iOS · Android · Web",
         screenBrand: "玉心道長",
         screenMode: "紫微摘星術",
         readingLabel: "星曜：天機 · 文昌 · 化科",
-        readingTitle: "此事宜先釐清事實，再行決策。",
+        readingTitle: "此事宜先釐清事實，再行決策",
         readingText: "星曜顯示局勢可以推進，關鍵在於先收集缺失的資訊再作決定。",
         line1Label: "問題",
         line1Value: "事業抉擇",
@@ -1151,7 +1158,7 @@
         aboutCard3Text: "適合關於合作、感情、事業、財富、抉擇與時機的明確問題。",
         aboutCard4Title: "啟發思考的參考",
         aboutCard4Text: "結果旨在啟發思考、輔助判斷，幫助你從另一個角度看問題。",
-        ziweiTitle: "紫微斗數是東方經典星曜體系。",
+        ziweiTitle: "紫微斗數是東方經典星曜體系",
         ziweiDesc: "紫微斗數位列中國五大神數之首，號稱「中華第一神數」。紫微斗數在古代被尊稱為「帝王學」，明清時期國家設置了專職機構「欽天監」對其進行研究和傳承，能接觸到紫微斗數的人只限於皇族中人或是由皇帝欽點的官員。",
         ziweiCard1Title: "星曜體系",
         ziweiCard1Text: "紫微斗數包含豐富的星曜體系。每顆星曜各有其象徵意義，可對應性格、事態、關係與行動傾向。",
@@ -1159,7 +1166,7 @@
         ziweiCard2Text: "十二宮位對應不同的人生領域，如事業、財富、感情、遷移等，讓星曜象徵落地於具體人生情境。",
         ziweiCard3Title: "星曜互動",
         ziweiCard3Text: "紫微斗數重視星曜之間的互動，以及其因強弱、位置、化曜產生的變化。玉心道長運用這些意涵，釐清當下問題的關鍵脈絡。",
-        useTitle: "可以問些什麼？",
+        useTitle: "可以問些什麼",
         useDesc: "紫微摘星術最適合具體明確的問題。問題越清晰，摘星解讀越聚焦、越有參考價值。",
         useIcon1: "業",
         useCard1Title: "事業",
@@ -1176,40 +1183,35 @@
         useCard3Question1: "現在投入精力或資源的時機好嗎？",
         useCard3Question2: "這個機會裡藏著哪些風險？",
         useCard3Question3: "張三欠我的錢一個月內是否可以要回來？",
-        processTitle: "三步完成紫微摘星術占卜。",
-        processDesc: "體驗簡單：問一個明確的問題，完成摘星，形成解讀。",
+        processTitle: "三步完成紫微摘星術占卜",
+        processDesc: "體驗簡單：問事，摘星，解讀。",
         stepIcon1: "問",
-        step1Title: "問一件事",
-        step1Text: "聚焦一個具體問題，不要將多個問題混在一次占卜中。",
+        step1Title: "問事",
+        step1Text: "一事一問，注意要聚焦一個具體問題，不要將多個問題混在一次占卜中。",
         stepIcon2: "摘",
         step2Title: "摘星",
-        step2Text: "以紫微摘星術根據問題摘取多顆星曜，將綜合星曜象徵與涉及的人物、事態、時機相聯結。",
+        step2Text: "你需要從眾多閃爍的星曜中摘取你當下心儀的星曜，並等待星曜顯象。",
         stepIcon3: "解",
-        step3Title: "形成解讀",
-        step3Text: "解讀呈現整體判斷、關鍵阻力、機會徵兆與需要留意的部分。",
+        step3Title: "解讀",
+        step3Text: "耐心等待，玉心道長將根據顯示的星曜解讀其中蘊藏的玄機，並解答你心中的疑問。",
         downloadTitle: "下載或打開玉心道長",
-        downloadDesc: "通過 iOS App 或 H5 網頁版進入玉心道長。iOS 版本支援 Apple 登入、Google 登入，並通過 Apple 內購購買解讀次數。",
+        downloadDesc: "選擇 iOS、Android 或 Web 進入玉心道長。",
         iosAlt: "iOS 二維碼",
         androidAlt: "Android 二維碼",
-        wechatAlt: "微信小程序二維碼",
-        iosTitle: "iOS App",
+        iosTitle: "iOS",
         androidTitle: "Android",
-        wechatTitle: "微信小程序",
-        webTitle: "H5 網頁版",
-        iosText: "適用於 iPhone 和 iPad。支援 Apple 登入、Google 登入與 Apple 內購解讀次數。",
-        androidText: "UniApp 項目保留 Android 打包能力。暫未提供 APK 時可直接使用 H5 版本。",
-        wechatText: "項目保留小程序頁面與合規路徑。官方小程序入口發布後可替換為小程序碼。",
-        webText: "無需下載。打開 H5 版本，使用電子郵件或手機號驗證碼登入，即可開始紫微摘星術占卜。",
-        webBox: "網頁",
-        downloadNote: "iOS App 版本為 1.0.0，Bundle ID 為 site.yuxinmaster.app。客服、退款或帳戶問題可聯絡 info@yuxinmaster.site。",
+        webTitle: "Web",
+        iosLinkText: "Apple 商店",
+        androidLinkText: "Android 商店",
+        webBox: "打開 Web",
         faqTitle: "常見問題",
-        faq1Title: "紫微摘星術和紫微斗數是什麼關係？",
+        faq1Title: "紫微摘星術和紫微斗數是什麼關係",
         faq1Text: "紫微摘星術和紫微斗數同宗同源，使用的是同樣的星曜玄理。紫微摘星術將這一玄理用於具體問題的占卜。",
-        faq2Title: "哪些問題適合問？",
+        faq2Title: "哪些問題適合問",
         faq2Text: "事業進展、感情溝通、財富機會、合作判斷、時機抉擇都適合參考紫微摘星術。",
-        faq3Title: "怎樣問效果更好？",
+        faq3Title: "怎樣問效果更好",
         faq3Text: "具體、聚焦的問題效果最好。例如「本月推進這個合作合適嗎？」就比「我的命運如何？」清晰得多。",
-        faq4Title: "結果是最終答案嗎？",
+        faq4Title: "結果是最終答案嗎",
         faq4Text: "結果僅供文化娛樂與個人思考參考，不構成法律、醫療、投資、金融或其他專業建議。",
         footerBrand: "玉心道長版權所有",
         backTop: "返回頂部 ↑"
@@ -1275,23 +1277,15 @@
 
       const qrIos = document.getElementById('qr-ios');
       const qrAndroid = document.getElementById('qr-android');
-      const qrWechat = document.getElementById('qr-wechat');
-      if (qrIos) qrIos.src = 'logo.png';
-      if (qrAndroid) qrAndroid.src = 'logo.png';
-      if (qrWechat) qrWechat.src = 'logo.png';
+      if (qrIos) qrIos.src = PLACEHOLDER_QR;
+      if (qrAndroid) qrAndroid.src = PLACEHOLDER_QR;
 
       const iosLink = document.getElementById('ios-link');
       const androidLink = document.getElementById('android-link');
-      const wechatLink = document.getElementById('wechat-link');
       const webLink = document.getElementById('web-link');
       if (iosLink) iosLink.href = DOWNLOAD_LINKS.ios;
       if (androidLink) androidLink.href = DOWNLOAD_LINKS.android;
-      if (wechatLink) wechatLink.href = DOWNLOAD_LINKS.wechat;
       if (webLink) webLink.href = DOWNLOAD_LINKS.web;
-      if (iosLink) iosLink.textContent = DOWNLOAD_LINKS.ios;
-      if (androidLink) androidLink.textContent = DOWNLOAD_LINKS.android;
-      if (wechatLink) wechatLink.textContent = DOWNLOAD_LINKS.wechat;
-      if (webLink) webLink.textContent = DOWNLOAD_LINKS.web;
       const webEntry = document.getElementById('web-entry');
       if (webEntry) webEntry.href = DOWNLOAD_LINKS.web;
     });
