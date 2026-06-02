@@ -6,6 +6,10 @@
   <title>Yuxin Master|Zi Wei Star-Picking Art</title>
   <meta name="description" content="Yuxin Master is an app for Zi Wei Star-Picking Art, a divination method sharing the same star principles and lineage as Zi Wei Dou Shu." />
   <meta name="theme-color" content="#170b2d" />
+  <link rel="icon" href="/favicon/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/favicon/site.webmanifest" />
   <meta property="og:title" content="Yuxin Master|Zi Wei Star-Picking Art" />
   <meta property="og:description" content="Ask one question, pick the stars, and receive Eastern star-based insight for the matter at hand." />
   <meta property="og:type" content="website" />
@@ -304,6 +308,7 @@
 
     section {
       position: relative;
+      scroll-margin-top: 72px;
       padding: 92px 0;
       background:
         radial-gradient(circle at 50% 0%, rgba(67, 35, 132, .16), transparent 38%),
@@ -375,18 +380,96 @@
     .question-list li { position: relative; padding-left: 18px; }
     .question-list li::before { content: ""; position: absolute; left: 0; top: .86em; width: 6px; height: 6px; border-radius: 50%; background: rgb(var(--card-accent)); box-shadow: 0 0 12px rgba(var(--card-accent), .42); }
 
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: step; }
-    .step-card {
-      padding: 24px;
-      min-height: 232px;
-      position: relative;
+    #process {
       overflow: hidden;
-      background: linear-gradient(160deg, rgba(72,40,132,.76), rgba(23,10,52,.9));
-      border-color: rgba(255,255,255,.2);
-      border-top-color: rgba(243,211,138,.5);
-      box-shadow: 0 22px 62px rgba(0,0,0,.3), 0 0 0 1px rgba(243,211,138,.12) inset, inset 0 0 40px rgba(255,255,255,.06);
+      background:
+        radial-gradient(ellipse at 50% 18%, rgba(243, 211, 138, .13), transparent 28%),
+        radial-gradient(ellipse at 18% 84%, rgba(76, 160, 175, .13), transparent 34%),
+        linear-gradient(180deg, rgba(8,3,17,.98), rgba(13,5,28,.99));
     }
-    .step-card::before { counter-increment: step; content: "0" counter(step); position: absolute; right: 20px; top: 16px; font-size: 48px; line-height: 1; font-weight: 900; color: rgba(243,211,138,.12); }
+    #process .section-head { margin-bottom: 54px; }
+    .steps {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      counter-reset: step;
+      padding: 34px 0 10px;
+    }
+    .steps::before {
+      content: "";
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      top: 92px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(243,211,138,.72), rgba(96,188,191,.54), rgba(243,211,138,.72), transparent);
+      box-shadow: 0 0 28px rgba(243,211,138,.24);
+    }
+    .step-card {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      justify-items: center;
+      text-align: center;
+      padding: 0 22px 10px;
+      min-height: 238px;
+      position: relative;
+      overflow: visible;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+    .step-card::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      display: grid;
+      place-items: center;
+      width: 74px;
+      height: 74px;
+      margin-bottom: 28px;
+      border-radius: 50%;
+      color: #25142e;
+      background: radial-gradient(circle at 30% 24%, #fff8de, #f3d38a 54%, #a8742b 100%);
+      border: 1px solid rgba(255,248,220,.78);
+      box-shadow: 0 0 0 12px rgba(243,211,138,.08), 0 20px 46px rgba(0,0,0,.34), 0 0 30px rgba(243,211,138,.34);
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: .08em;
+      z-index: 2;
+    }
+    .step-card::after {
+      content: "";
+      position: absolute;
+      top: 82px;
+      left: 50%;
+      width: 7px;
+      height: 7px;
+      transform: translateX(-50%) rotate(45deg);
+      background: #fff8de;
+      box-shadow: 0 0 18px rgba(243,211,138,.86);
+    }
+    .step-card .icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      color: #fff8e8;
+      border-color: rgba(96,188,191,.36);
+      background: rgba(96,188,191,.13);
+      box-shadow: 0 0 24px rgba(96,188,191,.12);
+    }
+    .step-card h3 {
+      margin: 0 0 12px;
+      color: #fff8e8;
+      font-size: 23px;
+    }
+    .step-card p {
+      max-width: 300px;
+      color: rgba(255,247,230,.7);
+    }
 
     .download-wrap {
       padding: 34px;
@@ -439,7 +522,43 @@
       .hero-copy { max-width: 680px; }
       .oracle-visual { display: none; min-height: 570px; }
       .intro-panel { grid-template-columns: 1fr; }
-      .grid-3, .ziwei-text-grid, .download-grid, .steps { grid-template-columns: 1fr; }
+      .grid-3, .ziwei-text-grid, .download-grid { grid-template-columns: 1fr; }
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 6px 0 0 34px;
+      }
+      .steps::before {
+        left: 36px;
+        right: auto;
+        top: 32px;
+        bottom: 42px;
+        width: 2px;
+        height: auto;
+        background: linear-gradient(180deg, rgba(243,211,138,.78), rgba(96,188,191,.54), rgba(243,211,138,.78), transparent);
+      }
+      .step-card {
+        min-height: auto;
+        justify-items: start;
+        text-align: left;
+        padding: 0 0 0 44px;
+      }
+      .step-card::before {
+        position: absolute;
+        left: -32px;
+        top: 0;
+        width: 68px;
+        height: 68px;
+        margin: 0;
+        box-shadow: 0 0 0 9px rgba(243,211,138,.08), 0 16px 34px rgba(0,0,0,.3), 0 0 24px rgba(243,211,138,.28);
+      }
+      .step-card::after {
+        left: 2px;
+        top: 76px;
+        transform: rotate(45deg);
+      }
+      .step-card .icon { margin: 5px 0 14px; }
+      .step-card p { max-width: none; }
       .faq-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
@@ -460,7 +579,13 @@
       .oracle-screen { min-height: 496px; padding: 19px; border-radius: 26px; }
       .reading-title { font-size: 24px; }
       section { padding: 70px 0; }
-      .paper-grid, .steps { grid-template-columns: 1fr; }
+      .paper-grid { grid-template-columns: 1fr; }
+      #process .section-head { margin-bottom: 38px; }
+      .steps { padding-left: 26px; }
+      .steps::before { left: 28px; }
+      .step-card { padding-left: 38px; }
+      .step-card::before { left: -31px; width: 62px; height: 62px; font-size: 16px; }
+      .step-card h3 { font-size: 21px; }
       .download-wrap { padding: 22px; border-radius: 28px; }
       .btn { width: 100%; }
       .tags span { width: 100%; }

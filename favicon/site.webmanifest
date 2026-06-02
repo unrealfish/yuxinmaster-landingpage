@@ -1,0 +1,27 @@
+{
+  "id": "/",
+  "name": "Yuxin Master",
+  "short_name": "Yuxin",
+  "description": "Yuxin Master is an app for Zi Wei Star-Picking Art, a divination method sharing the same star principles and lineage as Zi Wei Dou Shu.",
+  "lang": "en",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#170b2d",
+  "background_color": "#07030f"
+}
