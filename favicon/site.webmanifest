@@ -1,9 +1,9 @@
 {
   "id": "/",
-  "name": "Yuxin Master",
-  "short_name": "Yuxin",
-  "description": "Yuxin Master is an app for Zi Wei Star-Picking Art, a divination method sharing the same star principles and lineage as Zi Wei Dou Shu.",
-  "lang": "en",
+  "name": "玉心道长 Yuxin Master",
+  "short_name": "玉心道长",
+  "description": "玉心道长是一款紫微摘星术占卜 App，融合紫微斗数星曜体系，支持在线占卜与星曜解读。",
+  "lang": "zh-CN",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
