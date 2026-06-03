@@ -1059,6 +1059,8 @@
       "zh-CN": "zh_CN",
       "zh-TW": "zh_TW"
     };
+    const FALLBACK_LANG = "en";
+    const SUPPORTED_LANGS = Object.keys(LANGUAGE_URLS);
     const PLACEHOLDER_QR = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(`
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
         <rect width="160" height="160" fill="#fffaf0"/>
@@ -1411,6 +1413,49 @@
       }
     };
 
+    function normalizeLang(lang) {
+      if (typeof lang !== "string") return null;
+
+      const normalized = lang.trim().toLowerCase().replace(/_/g, "-");
+      if (!normalized) return null;
+
+      if (SUPPORTED_LANGS.includes(normalized)) return normalized;
+      if (normalized === "zh-tw" || normalized === "zh-hk" || normalized === "zh-mo" || normalized.startsWith("zh-hant")) return "zh-TW";
+      if (normalized === "zh-cn" || normalized === "zh-sg" || normalized === "zh" || normalized.startsWith("zh-hans")) return "zh-CN";
+      if (normalized.startsWith("en")) return "en";
+
+      return null;
+    }
+
+    function getStoredLang() {
+      try {
+        return normalizeLang(localStorage.getItem('yuxin-lang'));
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function setStoredLang(lang) {
+      try {
+        localStorage.setItem('yuxin-lang', lang);
+      } catch (error) {
+        // localStorage may be unavailable in privacy-restricted contexts.
+      }
+    }
+
+    function getSystemLang() {
+      const browserLangs = Array.isArray(navigator.languages) && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || navigator.userLanguage];
+
+      for (const browserLang of browserLangs) {
+        const lang = normalizeLang(browserLang);
+        if (lang) return lang;
+      }
+
+      return FALLBACK_LANG;
+    }
+
     function setLang(lang) {
       const t = I18N[lang];
       if (!t) return;
@@ -1513,10 +1558,10 @@
 
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-          const lang = btn.getAttribute('data-lang');
+          const lang = normalizeLang(btn.getAttribute('data-lang'));
           const targetUrl = btn.getAttribute('data-url');
           if (lang) {
-            localStorage.setItem('yuxin-lang', lang);
+            setStoredLang(lang);
             if (targetUrl && targetUrl !== window.location.pathname) {
               window.location.href = targetUrl;
               return;
@@ -1526,8 +1571,8 @@
         });
       });
 
-      const pageLang = document.documentElement.getAttribute('data-default-lang') || document.documentElement.lang || 'zh-CN';
-      setLang(pageLang);
+      const initialLang = getStoredLang() || getSystemLang() || FALLBACK_LANG;
+      setLang(initialLang);
 
       document.getElementById('year').textContent = new Date().getFullYear();
 
