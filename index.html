@@ -664,6 +664,9 @@
 
     .footer { position: relative; z-index: 3; padding: 52px 0 38px; border-top: 1px solid rgba(243,211,138,.13); color: var(--muted-2); font-size: 14px; }
     .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .footer-links { display: flex; align-items: center; justify-content: flex-end; gap: 12px 16px; flex-wrap: wrap; }
+    .footer-links a { transition: color .2s ease; }
+    .footer-links a:hover { color: var(--gold); }
     .back-to-top { color: var(--gold); }
     .mobile-only { display: none; }
 
@@ -1038,7 +1041,15 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div>© <span id="year"></span> <span data-i18n="footerBrand">玉心道长版权所有</span></div>
-      <a class="back-to-top" href="#top" data-i18n="backTop">返回顶部 ↑</a>
+      <nav class="footer-links" aria-label="Legal links">
+        <a href="/legal/legal/" data-legal-path="legal" data-i18n="footerLegal">法律信息</a>
+        <a href="/legal/terms-of-service/" data-legal-path="terms-of-service" data-i18n="footerTerms">服务条款</a>
+        <a href="/legal/privacy-statement/" data-legal-path="privacy-statement" data-i18n="footerPrivacy">隐私政策</a>
+        <a href="/legal/refund-policy/" data-legal-path="refund-policy" data-i18n="footerRefund">退款政策</a>
+        <a href="/legal/dmca-copyright-notice/" data-legal-path="dmca-copyright-notice" data-i18n="footerCopyright">DMCA 与版权</a>
+        <a href="/legal/disclaimer/" data-legal-path="disclaimer" data-i18n="footerDisclaimer">免责声明</a>
+        <a class="back-to-top" href="#top" data-i18n="backTop">返回顶部 ↑</a>
+      </nav>
     </div>
   </footer>
 
@@ -1187,6 +1198,12 @@
         faq4Title: "Is the result the final answer",
         faq4Text: "The result is for cultural entertainment and personal reflection. It does not constitute legal, medical, investment, financial or other professional advice.",
         footerBrand: "Yuxin Master. All rights reserved.",
+        footerLegal: "Legal Information",
+        footerTerms: "Terms",
+        footerPrivacy: "Privacy Policy",
+        footerRefund: "Refund Policy",
+        footerCopyright: "DMCA & Copyright",
+        footerDisclaimer: "Disclaimer",
         backTop: "Back to top ↑"
       },
       "zh-CN": {
@@ -1298,6 +1315,12 @@
         faq4Title: "结果是最终答案吗",
         faq4Text: "结果仅供文化娱乐与个人思考参考，不构成法律、医疗、投资、金融或其他专业建议。",
         footerBrand: "玉心道长版权所有",
+        footerLegal: "法律信息",
+        footerTerms: "服务条款",
+        footerPrivacy: "隐私政策",
+        footerRefund: "退款政策",
+        footerCopyright: "DMCA 与版权",
+        footerDisclaimer: "免责声明",
         backTop: "返回顶部 ↑"
       },
       "zh-TW": {
@@ -1409,6 +1432,12 @@
         faq4Title: "結果是最終答案嗎",
         faq4Text: "結果僅供文化娛樂與個人思考參考，不構成法律、醫療、投資、金融或其他專業建議。",
         footerBrand: "玉心道長版權所有",
+        footerLegal: "法律資訊",
+        footerTerms: "服務條款",
+        footerPrivacy: "隱私政策",
+        footerRefund: "退款政策",
+        footerCopyright: "DMCA 與版權",
+        footerDisclaimer: "免責聲明",
         backTop: "返回頂部 ↑"
       }
     };
@@ -1513,6 +1542,11 @@
 
       const ogLocale = document.querySelector('meta[property="og:locale"]');
       if (ogLocale && OG_LOCALES[lang]) ogLocale.setAttribute('content', OG_LOCALES[lang]);
+
+      const legalBase = lang === "en" ? "/en/legal/" : lang === "zh-TW" ? "/zh-tw/legal/" : "/legal/";
+      document.querySelectorAll('[data-legal-path]').forEach(link => {
+        link.setAttribute('href', `${legalBase}${link.getAttribute('data-legal-path')}/`);
+      });
     }
 
     document.addEventListener('DOMContentLoaded', () => {

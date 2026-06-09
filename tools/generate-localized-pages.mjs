@@ -103,6 +103,11 @@ function localize(lang, config) {
     return `<button class="lang-btn${active}" type="button" data-lang="${buttonLang}"`;
   });
 
+  const legalBase = lang === "en" ? "/en/legal/" : lang === "zh-TW" ? "/zh-tw/legal/" : "/legal/";
+  html = html.replace(/(<a\s+href=")[^"]*("\s+data-legal-path="([^"]+)")/g, (_, prefix, middle, slug) => {
+    return `${prefix}${legalBase}${slug}/${middle}`;
+  });
+
   fs.mkdirSync(path.dirname(config.output), { recursive: true });
   fs.writeFileSync(config.output, html);
 }
